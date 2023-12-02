@@ -4,10 +4,12 @@
  */
 package presenter;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import model.Usuario;
 import persistence.UsuarioDAOSQLite;
 import service.AutenticacaoService;
@@ -18,8 +20,8 @@ import view.LoginView;
  * @author nitro5WIN10
  */
 public class LoginPresenter {
-    LoginView view;
-    AutenticacaoService service;
+    private LoginView view;
+    private AutenticacaoService service;
     
     public LoginPresenter() {
         this.view = new LoginView();
@@ -30,9 +32,13 @@ public class LoginPresenter {
     private void autentica(){
         String nome = view.getTextFieldUsuario().getText();
         String senha = view.getTextFieldSenha().getText();
-        Usuario usuario = new Usuario(nome,senha);
         
-        service.autentica(usuario);
+        
+        if("".equals(nome) || "".equals(senha))
+            throw new RuntimeException("Campo vazio!");
+            
+        
+        service.autentica(nome, senha);
     }
     
     private void configura(){
@@ -43,7 +49,7 @@ public class LoginPresenter {
                 try{
                     autentica();
                 }catch(Exception e){
-                    throw new RuntimeException(e.getMessage());
+                    exibirMensagem(e.getMessage(), "Erro", 0);
                 }
             }
         });
@@ -52,9 +58,8 @@ public class LoginPresenter {
             @Override
             public void mouseClicked(MouseEvent evt){
                 try{
-                    
-                    //chamar a presenter do cadastro
-                    System.out.println("Clicou no cadastro!!");
+                    CadastroPresenter cadastro = new CadastroPresenter();
+                    view.getLabelTextCadastro().setForeground(Color.blue);
                 }catch(Exception e){
                     throw new RuntimeException(e.getMessage());
                 }
@@ -62,5 +67,9 @@ public class LoginPresenter {
         });
         
         this.view.setVisible(true);
+    }
+    
+    private void exibirMensagem(String mensagem, String titulo, int type){
+        JOptionPane.showMessageDialog(this.view, mensagem, titulo,type);
     }
 }

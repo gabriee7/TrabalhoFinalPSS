@@ -4,6 +4,7 @@
  */
 package service;
 
+import java.util.List;
 import model.Usuario;
 import persistence.IUsuarioDAO;
 
@@ -12,28 +13,28 @@ import persistence.IUsuarioDAO;
  * @author nitro5WIN10
  */
 public class AutenticacaoService {
-    IUsuarioDAO usuarioDAO;
+    GerenciadorUsuarioService gerenciadorUsuario;
 
     public AutenticacaoService(IUsuarioDAO dao) {
-        this.usuarioDAO = dao;
+        this.gerenciadorUsuario = new GerenciadorUsuarioService(dao);
     }
     
-    public void autentica(Usuario usuario){
+    public void autentica(String nome, String senha){
         try{
-            if(usuarioDAO.consultar(usuario)){  //se existe o usuario se torna autenticado
+            Usuario usuario = new Usuario(nome, senha);
+            if(gerenciadorUsuario.consultar(nome, senha)){  //se existe o usuario se torna autenticado
                 usuario.setAutenticado(true);
-            }else{
-                DotEnvService dotEnvService = new DotEnvService(); 
-                String env = dotEnvService.getDotEnv("userCount");
-                
-                if(env.equalsIgnoreCase("0") && usuarioDAO.criar(usuario)){ //verifica se é o primeiro usuario do sistema e já cria o usuario se for e se torna autenticado posteriormente alterar para encaminhar para tela de cadastro
-                    //verificar maneira de fazer um set no DotEnv
-                    usuario.setAutenticado(true);
-                }
+            }else if(gerenciadorUsuario.listarTodos().isEmpty()){                    //verifica se é o primeiro usuario do sistema e já cria o usuario se for e se torna autenticado posteriormente alterar para encaminhar para tela de cadastro
+                usuario.setAutenticado(true);
             }
             
-            usuarioDAO.atualizar(usuario); //atualiza o usuario no banco de dados
+            gerenciadorUsuario.atualizar(usuario); //atualiza o usuario no banco de dados
 
+
+//            List<Usuario> todos = usuarioDAO.listarTodos();
+//            for(Usuario elem: todos){   
+//                System.out.println("Nome: " + elem.getNome() + "\tSenha: " + elem.getSenha() + "\n");
+//            }
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }      

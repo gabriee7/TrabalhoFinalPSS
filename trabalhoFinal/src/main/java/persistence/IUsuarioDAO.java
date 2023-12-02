@@ -4,6 +4,7 @@
  */
 package persistence;
 
+import java.util.List;
 import model.Usuario;
 
 /**
@@ -14,6 +15,6 @@ public interface IUsuarioDAO {
     public boolean criar(Usuario usuario);
     public boolean consultar(Usuario usuario);
     public void atualizar(Usuario usuario);
-    public void deletar(Usuario usuario);
-//    public List<Usuario> listarTodos();
+    public boolean deletar(int id);
+    public List<Usuario> listarTodos();
 }

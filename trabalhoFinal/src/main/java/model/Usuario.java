@@ -13,10 +13,16 @@ public class Usuario {
     private String senha;
     private boolean autenticado;
     private int id;
-    
+
     public Usuario(String nome, String senha) {
         this.nome = nome;
         this.senha = senha;
+        this.autenticado = false;
+    }
+
+    public Usuario() {
+        this.nome = null;
+        this.senha = null;
         this.autenticado = false;
     }
 

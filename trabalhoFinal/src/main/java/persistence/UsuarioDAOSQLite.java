@@ -7,6 +7,8 @@ package persistence;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import model.Usuario;
 
 /**
@@ -74,14 +76,38 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
     }
     
     @Override
-    public void deletar(Usuario usuario){
-        //Implementar
+    public boolean deletar(int id){
+        return true;
     }
     
-//    @Override 
-//    public List<Usuario> listarTodos(){
-            //Implementar
+    @Override 
+    public List<Usuario> listarTodos(){
+        List<Usuario> usuarios = new ArrayList<>();
 
-//        return List<Usuario>;
-//    }
+        Connection conexao = ConexaoService.getConexao();
+
+        try {
+            String sql = "SELECT id, nome, senha, autenticado FROM usuario";
+            PreparedStatement preparaLista = conexao.prepareStatement(sql);
+
+            try (ResultSet resultSet = preparaLista.executeQuery()) {
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    String nome = resultSet.getString("nome");
+                    String senha = resultSet.getString("senha");
+                    boolean autenticado = resultSet.getBoolean("autenticado");
+
+                    Usuario usuario = new Usuario(nome, senha);
+                    usuarios.add(usuario);
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            ConexaoService.closeConexao(conexao);
+        }
+
+        return usuarios;
+    }
+    
 }

@@ -14,6 +14,7 @@ import presenter.LoginPresenter;
 public class Principal {
 
     public static void main(String[] args) {
+
         InicializaBanco.inicializar();
         
         LoginPresenter presenter = new LoginPresenter();
