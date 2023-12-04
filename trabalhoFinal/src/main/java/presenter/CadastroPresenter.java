@@ -35,8 +35,6 @@ public class CadastroPresenter {
             throw new RuntimeException("Campo vazio!!");
         }else if(!senha.equals(confirmaSenha)){
             throw new RuntimeException("Senhas não conferem!!" + senha + confirmaSenha);
-        }else if(gerenciadorUsuario.consultar(nome, senha) != null){ 
-            throw new RuntimeException("Usuário já existe!!"); //verificar se requisito exige nome de usuario unico MUITO PROVAVEL 
         }else{            
             gerenciadorUsuario.inserir(nome, senha);
         }

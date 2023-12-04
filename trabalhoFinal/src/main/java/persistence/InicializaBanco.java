@@ -19,7 +19,7 @@ public class InicializaBanco {
             PreparedStatement preparaUsuario = conexao.prepareStatement(
                     "CREATE TABLE IF NOT EXISTS usuario (" +
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        "nome TEXT," +
+                        "nome TEXT UNIQUE," +
                         "senha TEXT," +
                         "tipo TEXT," +
                         "autenticado BOOLEAN)"); 

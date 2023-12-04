@@ -20,6 +20,8 @@ public class MenuView extends javax.swing.JFrame {
      */
     public MenuView() {
         initComponents();
+        
+        setExtendedState(this.MAXIMIZED_BOTH);
     }
 
     /**

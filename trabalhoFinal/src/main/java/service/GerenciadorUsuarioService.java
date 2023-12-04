@@ -38,9 +38,8 @@ public class GerenciadorUsuarioService {
        return usuarioDAO.deletar(id);
    }
    
-   public Usuario consultar(String nome, String senha){
-       Usuario usuario = new Usuario(nome, senha);
-       return usuarioDAO.consultar(usuario);
+   public Usuario consultar(String nome){
+       return usuarioDAO.consultar(nome);
    }
    
    public void atualizar(Usuario usuario){

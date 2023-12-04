@@ -21,6 +21,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         Connection conexao = ConexaoService.getConexao();    
 
         try {
+
             // Consulta SQL para inserir um novo usuário
             String sql = "INSERT INTO usuario (nome, senha, tipo, autenticado) VALUES (?, ?, ?, ?)";
             String nome = usuario.getNome();
@@ -45,32 +46,38 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
     }
     
     @Override 
-    public Usuario consultar(Usuario usuario){
+    public Usuario consultar(String nome){
         Connection conexao = ConexaoService.getConexao();  //conexao do banco
-        try{
-            String nome = usuario.getNome();
-            String senha = usuario.getSenha();
-            
-            String sql = "SELECT * FROM usuario WHERE nome = ? AND senha = ? LIMIT 1"; //sql generico para que retorne o primeiro usuario encontrado
+        try{          
+            String sql = "SELECT * FROM usuario WHERE nome = ? LIMIT 1"; //sql generico para que retorne o primeiro usuario encontrado
 
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
             preparedStatement.setString(1, nome);  //insercao de where no sql
-            preparedStatement.setString(2, senha);
-
+            
             ResultSet resultSet = preparedStatement.executeQuery(); 
             
-            if(resultSet.next()) {
+            if(!resultSet.next()){
+                throw new RuntimeException("Usuário não existe!");
+            }else{
                 Usuario usuarioEncontrado = new Usuario();
                 usuarioEncontrado.setId(resultSet.getInt("id"));
                 usuarioEncontrado.setNome(resultSet.getString("nome"));
                 usuarioEncontrado.setSenha(resultSet.getString("senha"));
                 usuarioEncontrado.setTipo(resultSet.getString("tipo"));
                 usuarioEncontrado.setAutenticado(resultSet.getBoolean("autenticado"));
-
                 return usuarioEncontrado;
-            }else{
-                return null;
             }
+//            }else if( senha.equals(resultSet.getString("senha"))) {
+//                Usuario usuarioEncontrado = new Usuario();
+//                usuarioEncontrado.setId(resultSet.getInt("id"));
+//                usuarioEncontrado.setNome(resultSet.getString("nome"));
+//                usuarioEncontrado.setSenha(resultSet.getString("senha"));
+//                usuarioEncontrado.setTipo(resultSet.getString("tipo"));
+//                usuarioEncontrado.setAutenticado(resultSet.getBoolean("autenticado"));
+//                return usuarioEncontrado;
+//            }else{
+//                throw new RuntimeException("Senha Incorreta!");
+//            }
             
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
@@ -96,7 +103,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         Connection conexao = ConexaoService.getConexao();
 
         try {
-            String sql = "SELECT id, nome, tipo, senha, autenticado FROM usuario";
+            String sql = "SELECT * FROM usuario";
             PreparedStatement preparaLista = conexao.prepareStatement(sql);
 
             try (ResultSet resultSet = preparaLista.executeQuery()) {
