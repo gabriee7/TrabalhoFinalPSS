@@ -20,7 +20,13 @@ public class GerenciadorUsuarioService {
     }
    
    public void inserir(String nome, String senha){
-       Usuario usuario = new Usuario(nome, senha);
+    Usuario usuario = new Usuario(nome, senha);
+       if(listarTodos().isEmpty()){
+           usuario.setTipo("admin");
+       }else{
+           usuario.setTipo("padrao");
+       }
+       System.out.println(usuario);
        usuarioDAO.criar(usuario);
    }
    
@@ -32,7 +38,7 @@ public class GerenciadorUsuarioService {
        return usuarioDAO.deletar(id);
    }
    
-   public boolean consultar(String nome, String senha){
+   public Usuario consultar(String nome, String senha){
        Usuario usuario = new Usuario(nome, senha);
        return usuarioDAO.consultar(usuario);
    }

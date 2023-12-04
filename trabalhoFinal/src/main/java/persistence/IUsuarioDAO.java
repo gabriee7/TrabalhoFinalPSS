@@ -13,7 +13,7 @@ import model.Usuario;
  */
 public interface IUsuarioDAO {
     public boolean criar(Usuario usuario);
-    public boolean consultar(Usuario usuario);
+    public Usuario consultar(Usuario usuario);
     public void atualizar(Usuario usuario);
     public boolean deletar(int id);
     public List<Usuario> listarTodos();

@@ -11,17 +11,25 @@ package model;
 public class Usuario {
     private String nome;
     private String senha;
+    private String tipo;
     private boolean autenticado;
     private int id;
 
+    public Usuario(String nome, String senha, String tipo) {
+        this.nome = nome;
+        this.senha = senha;
+        this.tipo = tipo;
+        this.autenticado = false;
+    }
+    
     public Usuario(String nome, String senha) {
         this.nome = nome;
         this.senha = senha;
         this.autenticado = false;
     }
-
     public Usuario() {
         this.nome = null;
+        this.tipo = null;
         this.senha = null;
         this.autenticado = false;
     }
@@ -56,6 +64,14 @@ public class Usuario {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     
     

@@ -32,13 +32,15 @@ public class LoginPresenter {
     private void autentica(){
         String nome = view.getTextFieldUsuario().getText();
         String senha = view.getTextFieldSenha().getText();
-        
+        Usuario usuario = service.autentica(nome, senha);
         
         if("".equals(nome) || "".equals(senha))
             throw new RuntimeException("Campo vazio!");
             
-        
-        service.autentica(nome, senha);
+        if(usuario != null){
+            MenuPresenter menu = new  MenuPresenter(usuario);
+            this.view.setVisible(false);
+        }
     }
     
     private void configura(){

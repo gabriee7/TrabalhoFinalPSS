@@ -21,6 +21,7 @@ public class InicializaBanco {
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "nome TEXT," +
                         "senha TEXT," +
+                        "tipo TEXT," +
                         "autenticado BOOLEAN)"); 
             preparaUsuario.executeUpdate();
             preparaUsuario.close();

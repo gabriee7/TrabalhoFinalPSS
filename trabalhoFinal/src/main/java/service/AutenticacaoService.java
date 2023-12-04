@@ -19,22 +19,25 @@ public class AutenticacaoService {
         this.gerenciadorUsuario = new GerenciadorUsuarioService(dao);
     }
     
-    public void autentica(String nome, String senha){
+    public Usuario autentica(String nome, String senha){
         try{
-            Usuario usuario = new Usuario(nome, senha);
-            if(gerenciadorUsuario.consultar(nome, senha)){  //se existe o usuario se torna autenticado
-                usuario.setAutenticado(true);
+            Usuario usuarioAutentica = gerenciadorUsuario.consultar(nome, senha);
+          
+            if(usuarioAutentica != null){  //se existe o usuario se torna autenticado
+                usuarioAutentica.setAutenticado(true);
+                return usuarioAutentica;
             }else if(gerenciadorUsuario.listarTodos().isEmpty()){                    //verifica se é o primeiro usuario do sistema e já cria o usuario se for e se torna autenticado posteriormente alterar para encaminhar para tela de cadastro
-                usuario.setAutenticado(true);
+                throw new RuntimeException("Não há usuarios, cadastre agora.");
             }
             
-            gerenciadorUsuario.atualizar(usuario); //atualiza o usuario no banco de dados
+//            gerenciadorUsuario.atualizar(usuario); //atualiza o usuario no banco de dados
 
-
-//            List<Usuario> todos = usuarioDAO.listarTodos();
+//            List<Usuario> todos = gerenciadorUsuario.listarTodos();
 //            for(Usuario elem: todos){   
 //                System.out.println("Nome: " + elem.getNome() + "\tSenha: " + elem.getSenha() + "\n");
 //            }
+            
+            return null;
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }      
