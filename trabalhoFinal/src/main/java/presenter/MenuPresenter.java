@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 import model.Usuario;
 import persistence.UsuarioDAOSQLite;
 import service.GerenciadorUsuarioService;
+import view.ConfiguracaoView;
 import view.MenuView;
+import view.NotificacaoView;
 import view.UsuarioView;
 
 /**
@@ -39,10 +41,25 @@ public class MenuPresenter {
         view.getBtnUsuario().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt){
-                System.out.println("cliquei");
                 UsuarioView usuarioV = new UsuarioView();
-                view.getjDesktopPane1().removeAll();
                 view.getjDesktopPane1().add(usuarioV).setVisible(true);
+            }
+        });
+        
+        view.getBtnNotificacao().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt){
+                NotificacaoView notificacaoV = new NotificacaoView();
+                view.getjDesktopPane1().add(notificacaoV).setVisible(true);
+            }
+        });
+        
+        
+        view.getBtnConfiguracao().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt){
+                ConfiguracaoView configuracaoV = new ConfiguracaoView();
+                view.getjDesktopPane1().add(configuracaoV).setVisible(true);
             }
         });
         

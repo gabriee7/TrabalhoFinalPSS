@@ -37,6 +37,8 @@ public class MenuView extends javax.swing.JFrame {
         labelUsuarioPrivilegio = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         btnUsuario = new javax.swing.JButton();
+        btnNotificacao = new javax.swing.JButton();
+        btnConfiguracao = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         textUsuarioMenuBar = new javax.swing.JMenu();
         textNotificacoesMenuBar = new javax.swing.JMenu();
@@ -53,10 +55,14 @@ public class MenuView extends javax.swing.JFrame {
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addGap(0, 486, Short.MAX_VALUE)
         );
 
         btnUsuario.setText("Usuario");
+
+        btnNotificacao.setText("Notificação");
+
+        btnConfiguracao.setText("Configuração");
 
         jMenuBar1.setToolTipText("");
 
@@ -84,17 +90,24 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(labelUsuarioPrivilegio, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jDesktopPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(btnNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(btnConfiguracao, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(btnUsuario)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUsuario)
+                    .addComponent(btnNotificacao)
+                    .addComponent(btnConfiguracao))
                 .addGap(33, 33, 33)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addComponent(jDesktopPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelUsuarioPrivilegio, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -128,9 +141,19 @@ public class MenuView extends javax.swing.JFrame {
         return btnUsuario;
     }
 
+    public JButton getBtnConfiguracao() {
+        return btnConfiguracao;
+    }
+
+    public JButton getBtnNotificacao() {
+        return btnNotificacao;
+    }
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfiguracao;
+    private javax.swing.JButton btnNotificacao;
     private javax.swing.JButton btnUsuario;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar1;
