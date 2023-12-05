@@ -67,21 +67,11 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
                 usuarioEncontrado.setAutenticado(resultSet.getBoolean("autenticado"));
                 return usuarioEncontrado;
             }
-//            }else if( senha.equals(resultSet.getString("senha"))) {
-//                Usuario usuarioEncontrado = new Usuario();
-//                usuarioEncontrado.setId(resultSet.getInt("id"));
-//                usuarioEncontrado.setNome(resultSet.getString("nome"));
-//                usuarioEncontrado.setSenha(resultSet.getString("senha"));
-//                usuarioEncontrado.setTipo(resultSet.getString("tipo"));
-//                usuarioEncontrado.setAutenticado(resultSet.getBoolean("autenticado"));
-//                return usuarioEncontrado;
-//            }else{
-//                throw new RuntimeException("Senha Incorreta!");
-//            }
+
             
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
-        } finally {
+        }finally {
             ConexaoService.closeConexao(conexao);
         }
     }
