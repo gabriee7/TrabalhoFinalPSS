@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author nitro5WIN10
@@ -13,13 +15,15 @@ public class Usuario {
     private String senha;
     private String tipo;
     private boolean autenticado;
+    private LocalDate dataCadastro;
     private int id;
 
-    public Usuario(String nome, String senha, String tipo) {
+    public Usuario(String nome, String senha, String tipo, LocalDate data) {
         this.nome = nome;
         this.senha = senha;
         this.tipo = tipo;
         this.autenticado = false;
+        this.dataCadastro = data;
     }
     
     public Usuario(String nome, String senha) {

@@ -22,7 +22,8 @@ public class InicializaBanco {
                         "nome TEXT UNIQUE," +
                         "senha TEXT," +
                         "tipo TEXT," +
-                        "autenticado BOOLEAN)"); 
+                        "autenticado BOOLEAN," +
+                        "dataCadastro DATE DEFAULT CURRENT_DATE)");
             preparaUsuario.executeUpdate();
             preparaUsuario.close();
         } catch (Exception e) {

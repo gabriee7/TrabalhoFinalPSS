@@ -7,6 +7,7 @@ package persistence;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import model.Usuario;
@@ -23,7 +24,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         try {
 
             // Consulta SQL para inserir um novo usuário
-            String sql = "INSERT INTO usuario (nome, senha, tipo, autenticado) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO usuario (nome, senha, tipo, autenticado, dataCadastro) VALUES (?, ?, ?, ?, ?)";
             String nome = usuario.getNome();
             String senha = usuario.getSenha();
             String tipo = usuario.getTipo();
@@ -34,6 +35,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
             preparedStatement.setString(2, senha);
             preparedStatement.setString(3,tipo);
             preparedStatement.setBoolean(4, autenticado);
+            preparedStatement.setDate(5, java.sql.Date.valueOf(LocalDate.now()));
 
             int rowsAffected = preparedStatement.executeUpdate();
             
@@ -65,6 +67,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
                 usuarioEncontrado.setSenha(resultSet.getString("senha"));
                 usuarioEncontrado.setTipo(resultSet.getString("tipo"));
                 usuarioEncontrado.setAutenticado(resultSet.getBoolean("autenticado"));
+                usuarioEncontrado.setDataCadastro(resultSet.getDate("dataCadastro").toLocalDate());
                 return usuarioEncontrado;
             }
 
@@ -103,8 +106,10 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
                     String senha = resultSet.getString("senha");
                     String tipo = resultSet.getString("tipo");
                     boolean autenticado = resultSet.getBoolean("autenticado");
-
-                    Usuario usuario = new Usuario(nome, senha, tipo);
+                    
+                    LocalDate dataCadastro = resultSet.getDate("dataCadastro").toLocalDate();
+                    
+                    Usuario usuario = new Usuario(nome, senha, tipo, dataCadastro);
                     usuarios.add(usuario);
                 }
             }
