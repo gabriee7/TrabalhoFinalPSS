@@ -17,13 +17,27 @@ public class InicializaBanco {
         try {
             Connection conexao = ConexaoService.getConexao();
             PreparedStatement preparaUsuario = conexao.prepareStatement(
-                    "CREATE TABLE IF NOT EXISTS usuario (" +
-                        "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        "nome TEXT UNIQUE," +
-                        "senha TEXT," +
-                        "tipo TEXT," +
-                        "autenticado BOOLEAN," +
-                        "dataCadastro DATE DEFAULT CURRENT_DATE)");
+                "CREATE TABLE IF NOT EXISTS usuario (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "nome TEXT UNIQUE," +
+                    "senha TEXT," +
+                    "tipo TEXT," +
+                    "autenticado BOOLEAN," +
+                    "dataCadastro DATE DEFAULT CURRENT_DATE);"+
+
+                "CREATE TABLE Notificacao ("+
+                    "id_notificacao INT PRIMARY KEY,"+
+                    "titulo VARCHAR(255),"+
+                    "mensagem TEXT,"+
+
+                "CREATE TABLE NotificacaoUsuario ("+
+                    "id_notificacao INT,"+
+                    "id_usuario INT,"+
+                    "lida BOOLEAN,"+
+                    "PRIMARY KEY (id_notificacao, id_usuario),"+
+                    "FOREIGN KEY (id_notificacao) REFERENCES Notificacao(id_notificacao),"+
+                    "FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario));"
+            );
             preparaUsuario.executeUpdate();
             preparaUsuario.close();
         } catch (Exception e) {

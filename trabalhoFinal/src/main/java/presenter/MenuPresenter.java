@@ -54,7 +54,6 @@ public class MenuPresenter {
             }
         });
         
-        
         view.getBtnConfiguracao().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt){
