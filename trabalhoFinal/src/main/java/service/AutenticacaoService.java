@@ -14,35 +14,41 @@ import persistence.IUsuarioDAO;
  */
 public class AutenticacaoService {
     GerenciadorUsuarioService gerenciadorUsuario;
+    private Usuario usuarioAutenticado;
 
     public AutenticacaoService(IUsuarioDAO dao) {
         this.gerenciadorUsuario = new GerenciadorUsuarioService(dao);
+        this.usuarioAutenticado = null;
     }
     
     public Usuario autentica(String nome, String senha){
         try{ 
             if(gerenciadorUsuario.listarTodos().isEmpty()){
                 throw new RuntimeException("Não há usuarios, cadastre agora.");}
-            Usuario usuarioAutentica = gerenciadorUsuario.consultar(nome);
+            Usuario usuario = gerenciadorUsuario.consultar(nome);
 
-            if(usuarioAutentica == null){
+            if(usuario == null){
                 throw new RuntimeException("Login Incorreto!");
-            } else if(senha.equals(usuarioAutentica.getSenha())) {
-                return usuarioAutentica;
+            } else if(senha.equals(usuario.getSenha())) {
+                setUsuarioAutenticado(usuario); 
+                return usuario;
             }else{
                 throw new RuntimeException("Senha Incorreta!");
             }
             
-//            if(usuarioAutentica != null){  //se existe o usuario se torna autenticado
-//                usuarioAutentica.setAutenticado(true);
-//                return usuarioAutentica;
-//            }else if(gerenciadorUsuario.listarTodos().isEmpty()){                    //verifica se é o primeiro usuario do sistema e já cria o usuario se for e se torna autenticado posteriormente alterar para encaminhar para tela de cadastro
-//                throw new RuntimeException("Não há usuarios, cadastre agora.");
-//            }
-//            
-//            throw new RuntimeException("Login Incorreto!");
+
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }      
     }
+
+    private void setUsuarioAutenticado(Usuario usuarioAutenticado) {
+        this.usuarioAutenticado = usuarioAutenticado;
+    }
+
+    public Usuario getUsuarioAutenticado() {
+        return usuarioAutenticado;
+    }
+    
+    
 }
