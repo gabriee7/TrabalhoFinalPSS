@@ -22,8 +22,6 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         Connection conexao = ConexaoService.getConexao();    
 
         try {
-
-            // Consulta SQL para inserir um novo usuário
             String sql = "INSERT INTO usuario (nome, senha, tipo, autenticado, dataCadastro) VALUES (?, ?, ?, ?, ?)";
             String nome = usuario.getNome();
             String senha = usuario.getSenha();
@@ -79,14 +77,50 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         }
     }
     
-    @Override 
-    public void atualizar(Usuario usuario){
-        //Implementar
-    }
-    
     @Override
-    public boolean deletar(int id){
-        return true;
+    public void atualizar(Usuario usuario) {
+        Connection conexao = ConexaoService.getConexao();
+
+        try {
+            String sql = "UPDATE usuario SET nome = ?, senha = ?, tipo = ?, autenticado = ? WHERE id = ?";
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+
+            preparedStatement.setString(1, usuario.getNome());
+            preparedStatement.setString(2, usuario.getSenha());
+            preparedStatement.setString(3, usuario.getTipo());
+            preparedStatement.setBoolean(4, usuario.isAutenticado());
+            preparedStatement.setInt(5, usuario.getId());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected <= 0) {
+                throw new RuntimeException("Nenhum usuário foi atualizado. Verifique o ID do usuário.");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            ConexaoService.closeConexao(conexao);
+        }
+    }
+
+    @Override
+    public boolean deletar(int id) {
+        Connection conexao = ConexaoService.getConexao();
+
+        try {
+            String sql = "DELETE FROM usuario WHERE id = ?";
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+
+            preparedStatement.setInt(1, id);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            return rowsAffected > 0;
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            ConexaoService.closeConexao(conexao);
+        }
     }
     
     @Override 

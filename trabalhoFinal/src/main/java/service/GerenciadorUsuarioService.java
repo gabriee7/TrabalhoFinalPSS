@@ -50,7 +50,7 @@ public class GerenciadorUsuarioService {
        return usuarioDAO.consultar(nome);
     }
    
-    public void atualizar(Usuario usuario){
+    public void alterarSenha(Usuario usuario){
        usuarioDAO.atualizar(usuario);
     }
 }
