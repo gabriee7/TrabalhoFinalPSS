@@ -22,7 +22,7 @@ public class InicializaBanco {
                     "nome TEXT UNIQUE," +
                     "senha TEXT," +
                     "tipo TEXT," +
-                    "autenticado BOOLEAN," +
+                    "ativo BOOLEAN," +
                     "dataCadastro DATE DEFAULT CURRENT_DATE);"+
 
                 "CREATE TABLE Notificacao ("+

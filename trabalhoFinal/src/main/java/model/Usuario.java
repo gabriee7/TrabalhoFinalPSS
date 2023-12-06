@@ -14,7 +14,7 @@ public class Usuario {
     private String nome;
     private String senha;
     private String tipo;
-    private boolean autenticado;
+    private boolean ativo;
     private LocalDate dataCadastro;
     private int id;
 
@@ -22,20 +22,20 @@ public class Usuario {
         this.nome = nome;
         this.senha = senha;
         this.tipo = tipo;
-        this.autenticado = false;
+        this.ativo = false;
         this.dataCadastro = data;
     }
     
     public Usuario(String nome, String senha) {
         this.nome = nome;
         this.senha = senha;
-        this.autenticado = false;
+        this.ativo = false;
     }
     public Usuario() {
         this.nome = null;
         this.tipo = null;
         this.senha = null;
-        this.autenticado = false;
+        this.ativo = false;
     }
 
     public String getNome() {
@@ -54,12 +54,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public boolean isAutenticado() {
-        return autenticado;
+    public boolean isAtivo() {
+        return ativo;
     }
 
-    public void setAutenticado(boolean autenticado) {
-        this.autenticado = autenticado;
+    public void setAtivo(boolean autenticado) {
+        this.ativo = autenticado;
     }
 
     public int getId() {
