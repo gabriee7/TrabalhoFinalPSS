@@ -49,27 +49,39 @@ public class JsonLog implements ILog {
         }
     }
 
-    private JSONArray lerArquivo() {
-        JSONArray jsonArray = new JSONArray();
-        File arquivo = new File(arquivoJson);
+private JSONArray lerArquivo() {
+    JSONArray jsonArray = new JSONArray();
+    File arquivo = new File(arquivoJson);
 
-        if (arquivo.exists()) {
-            try (FileReader fileReader = new FileReader(arquivo)) {
-                jsonArray = new JSONArray(fileReader);
-            } catch (IOException e) {
-                e.printStackTrace();
+    if (arquivo.exists()) {
+        try (FileReader fileReader = new FileReader(arquivo)) {
+            int fileSize = (int) arquivo.length();
+
+            if (fileSize > 0) {
+                char[] content = new char[fileSize];
+                fileReader.read(content);
+
+                jsonArray = new JSONArray(new String(content));
             }
-        }
-
-        return jsonArray;
-    }
-
-    private void salvarArquivo(JSONArray jsonArray) {
-        try (FileWriter fileWriter = new FileWriter(arquivoJson)) {
-            fileWriter.write(jsonArray.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    return jsonArray;
+}
+
+private void salvarArquivo(JSONArray jsonArray) {
+    try (FileWriter fileWriter = new FileWriter(arquivoJson)) {
+        if (jsonArray.length() == 0) {
+            fileWriter.write("[]");
+        } else {
+            fileWriter.write(jsonArray.toString());
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 }
 
