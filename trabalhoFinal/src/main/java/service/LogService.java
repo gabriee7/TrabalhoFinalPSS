@@ -5,9 +5,6 @@
 package service;
 
 import log.ILog;
-import io.github.cdimascio.dotenv.Dotenv;
-import java.lang.reflect.Method;
-import persistence.Factory.IDAOFactory;
 import properties.Configuracao;
 /**
  *
@@ -40,6 +37,6 @@ public class LogService {
     private void getProperties(){
         Configuracao config = Configuracao.getInstancia();
         
-        properties = config.getProp("SGBD");
+        properties = config.getProp("LOG");
     }
 }
