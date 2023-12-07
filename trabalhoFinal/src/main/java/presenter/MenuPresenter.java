@@ -7,7 +7,6 @@ package presenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Usuario;
-import persistence.UsuarioDAOSQLite;
 import service.GerenciadorUsuarioService;
 import view.ConfiguracaoView;
 import view.MenuView;

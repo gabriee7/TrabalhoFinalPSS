@@ -11,7 +11,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import model.Usuario;
-import persistence.UsuarioDAOSQLite;
 import service.AutenticacaoService;
 import view.LoginView;
 

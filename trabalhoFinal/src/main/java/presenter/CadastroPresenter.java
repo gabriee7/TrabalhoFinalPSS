@@ -7,8 +7,6 @@ package presenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import model.Usuario;
-import persistence.UsuarioDAOSQLite;
 import service.GerenciadorUsuarioService;
 import view.CadastroView;
 
