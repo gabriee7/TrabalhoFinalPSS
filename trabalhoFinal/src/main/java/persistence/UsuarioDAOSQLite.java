@@ -22,17 +22,17 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         Connection conexao = ConexaoService.getConexao();    
 
         try {
-            String sql = "INSERT INTO usuario (nome, senha, tipo, autenticado, dataCadastro) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO usuario (nome, senha, tipo, ativo, dataCadastro) VALUES (?, ?, ?, ?, ?)";
             String nome = usuario.getNome();
             String senha = usuario.getSenha();
             String tipo = usuario.getTipo();
-            boolean autenticado = usuario.isAutenticado();
+            boolean ativo = usuario.isAtivo();
             
             PreparedStatement preparedStatement = conexao.prepareStatement(sql); 
             preparedStatement.setString(1, nome);
             preparedStatement.setString(2, senha);
             preparedStatement.setString(3,tipo);
-            preparedStatement.setBoolean(4, autenticado);
+            preparedStatement.setBoolean(4, ativo);
             preparedStatement.setDate(5, java.sql.Date.valueOf(LocalDate.now()));
 
             int rowsAffected = preparedStatement.executeUpdate();
@@ -64,7 +64,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
                 usuarioEncontrado.setNome(resultSet.getString("nome"));
                 usuarioEncontrado.setSenha(resultSet.getString("senha"));
                 usuarioEncontrado.setTipo(resultSet.getString("tipo"));
-                usuarioEncontrado.setAutenticado(resultSet.getBoolean("autenticado"));
+                usuarioEncontrado.setAtivo(resultSet.getBoolean("ativo"));
                 usuarioEncontrado.setDataCadastro(resultSet.getDate("dataCadastro").toLocalDate());
                 return usuarioEncontrado;
             }
@@ -82,13 +82,13 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         Connection conexao = ConexaoService.getConexao();
 
         try {
-            String sql = "UPDATE usuario SET nome = ?, senha = ?, tipo = ?, autenticado = ? WHERE id = ?";
+            String sql = "UPDATE usuario SET nome = ?, senha = ?, tipo = ?, ativo = ? WHERE id = ?";
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
 
             preparedStatement.setString(1, usuario.getNome());
             preparedStatement.setString(2, usuario.getSenha());
             preparedStatement.setString(3, usuario.getTipo());
-            preparedStatement.setBoolean(4, usuario.isAutenticado());
+            preparedStatement.setBoolean(4, usuario.isAtivo());
             preparedStatement.setInt(5, usuario.getId());
 
             int rowsAffected = preparedStatement.executeUpdate();
@@ -139,7 +139,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
                     String nome = resultSet.getString("nome");
                     String senha = resultSet.getString("senha");
                     String tipo = resultSet.getString("tipo");
-                    boolean autenticado = resultSet.getBoolean("autenticado");
+                    boolean ativo = resultSet.getBoolean("ativo");
                     
                     LocalDate dataCadastro = resultSet.getDate("dataCadastro").toLocalDate();
                     
