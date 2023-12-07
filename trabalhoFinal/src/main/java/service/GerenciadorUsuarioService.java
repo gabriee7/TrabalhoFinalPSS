@@ -8,6 +8,7 @@ import com.pss.senha.validacao.ValidadorSenha;
 import java.util.ArrayList;
 import java.util.List;
 import model.Usuario;
+import persistence.Factory.DAOFactoryService;
 import persistence.IUsuarioDAO;
 
 /**
@@ -15,10 +16,12 @@ import persistence.IUsuarioDAO;
  * @author nitro5WIN10
  */
 public class GerenciadorUsuarioService {
-   private IUsuarioDAO usuarioDAO;
+    private IUsuarioDAO usuarioDAO;
+    private DAOFactoryService factoryService;
 
     public GerenciadorUsuarioService(IUsuarioDAO usuarioDAO) {
-        this.usuarioDAO = usuarioDAO;
+        this.factoryService = new DAOFactoryService();
+        this.usuarioDAO = factoryService.getUsuarioDAO();
     }
    
     public void inserir(String nome, String senha){
@@ -31,7 +34,7 @@ public class GerenciadorUsuarioService {
         Usuario usuario = new Usuario(nome, senha);
         if(listarTodos().isEmpty()){
            usuario.setTipo("admin");
-        }else{
+        }else { // falta implementar set Ativo ou nao
            usuario.setTipo("padrao");
         }
         System.out.println(usuario);
