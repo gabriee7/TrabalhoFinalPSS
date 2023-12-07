@@ -7,37 +7,39 @@ package service;
 import log.ILog;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.lang.reflect.Method;
+import persistence.Factory.IDAOFactory;
+import properties.Configuracao;
 /**
  *
  * @author nitro5WIN10
  */
 public class LogService {
     private ILog metodoLog;
-    private String env;
+    private String properties;
 
     public LogService() {
-        setMetodo();
+        metodoLog = getLogFactory();
     }
     
-    private void setMetodo(){  
-        getDotEnv();
+    private ILog getLogFactory(){  
         try{
-            Class<?> classeEnv = Class.forName(env);
-            Method metodoGetInstancia = classeEnv.getMethod("getInstancia");
-            Object instancia = metodoGetInstancia.invoke(null);
-            metodoLog = (ILog)instancia;
+            getProperties();
+            Class<?> classeProp = Class.forName(properties);
+            Object instanciaLog = classeProp.getDeclaredConstructor().newInstance();
+            return (ILog)instanciaLog;
         }catch(Exception e) {
             throw new RuntimeException("Erro: LOG não suportado! \n" + e.getMessage());
         }
     }
     
-    private void getDotEnv(){
-        Dotenv dotenv = Dotenv.configure().load();
-
-        env = dotenv.get("LOG");
+    public void addLog(String mensagem){
+        //tratar exceçao caso metodoLog esteja nulo
+        metodoLog.addLog(mensagem);
     }
     
-    public void addLog(String mensagem){
-        metodoLog.addLog(mensagem);
+    private void getProperties(){
+        Configuracao config = Configuracao.getInstancia();
+        
+        properties = config.getProp("SGBD");
     }
 }
