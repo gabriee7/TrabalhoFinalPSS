@@ -25,7 +25,7 @@ public class LoginPresenter {
     
     public LoginPresenter() {
         this.view = new LoginView();
-        this.service = new AutenticacaoService(new UsuarioDAOSQLite()); //alterar a passagem de parametro por construtor, implementar FactoryMethod ou outro metodo com DotEnv
+        this.service = new AutenticacaoService(); 
         configura();
     }
     

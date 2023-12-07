@@ -16,8 +16,8 @@ public class AutenticacaoService {
     GerenciadorUsuarioService gerenciadorUsuario;
     private Usuario usuarioAutenticado;
 
-    public AutenticacaoService(IUsuarioDAO dao) {
-        this.gerenciadorUsuario = new GerenciadorUsuarioService(dao);
+    public AutenticacaoService() {
+        this.gerenciadorUsuario = new GerenciadorUsuarioService();
         this.usuarioAutenticado = null;
     }
     

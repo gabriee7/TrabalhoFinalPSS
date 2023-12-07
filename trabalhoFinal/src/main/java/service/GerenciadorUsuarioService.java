@@ -19,7 +19,7 @@ public class GerenciadorUsuarioService {
     private IUsuarioDAO usuarioDAO;
     private DAOFactoryService factoryService;
 
-    public GerenciadorUsuarioService(IUsuarioDAO usuarioDAO) {
+    public GerenciadorUsuarioService() {
         this.factoryService = new DAOFactoryService();
         this.usuarioDAO = factoryService.getUsuarioDAO();
     }
@@ -34,6 +34,7 @@ public class GerenciadorUsuarioService {
         Usuario usuario = new Usuario(nome, senha);
         if(listarTodos().isEmpty()){
            usuario.setTipo("admin");
+           usuario.setAtivo(true);
         }else { // falta implementar set Ativo ou nao
            usuario.setTipo("padrao");
         }

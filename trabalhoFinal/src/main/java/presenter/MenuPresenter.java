@@ -26,7 +26,7 @@ public class MenuPresenter {
     public MenuPresenter(Usuario usuario) {
         this.view = new MenuView();
         this.usuarioAutenticado = usuario;
-        this.gerenciadorUsuario = new GerenciadorUsuarioService(new UsuarioDAOSQLite());
+        this.gerenciadorUsuario = new GerenciadorUsuarioService();
         configura();
     }
     

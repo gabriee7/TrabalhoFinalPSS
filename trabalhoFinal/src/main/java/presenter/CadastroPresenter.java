@@ -22,7 +22,7 @@ public class CadastroPresenter {
 
     public CadastroPresenter() {
         this.view = new CadastroView();
-        this.gerenciadorUsuario = new GerenciadorUsuarioService(new UsuarioDAOSQLite()); //mudar esta implementação de passagem deste parametro pelo construtor
+        this.gerenciadorUsuario = new GerenciadorUsuarioService();
         configurar();
     }
     
