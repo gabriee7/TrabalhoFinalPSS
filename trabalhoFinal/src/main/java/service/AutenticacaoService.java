@@ -12,11 +12,10 @@ import model.Usuario;
  */
 public class AutenticacaoService {
     GerenciadorUsuarioService gerenciadorUsuario;
-    private Usuario usuarioAutenticado;
+    public static AutenticacaoService instancia;
 
     public AutenticacaoService() {
         this.gerenciadorUsuario = new GerenciadorUsuarioService();
-        this.usuarioAutenticado = null;
     }
     
     public Usuario autentica(String nome, String senha){
@@ -27,8 +26,10 @@ public class AutenticacaoService {
 
             if(usuario == null){
                 throw new RuntimeException("Login Incorreto!");
-            } else if(senha.equals(usuario.getSenha())) {
-                setUsuarioAutenticado(usuario); 
+            }else if (!usuario.isAtivo()){
+                throw new RuntimeException("Não é possível realizar login, seu usuário permance inativo até que um administrador aprove seu cadastro.");
+            }else if(senha.equals(usuario.getSenha())) {
+                Sessao.getInstancia().setUsuarioLogado(usuario); 
                 return usuario;
             }else{
                 throw new RuntimeException("Senha Incorreta!");
@@ -38,15 +39,5 @@ public class AutenticacaoService {
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }      
-    }
-
-    private void setUsuarioAutenticado(Usuario usuarioAutenticado) {
-        this.usuarioAutenticado = usuarioAutenticado;
-    }
-
-    public Usuario getUsuarioAutenticado() {
-        return usuarioAutenticado;
-    }
-    
-    
+    } 
 }

@@ -18,11 +18,12 @@ public class GerenciadorUsuarioService {
     private IUsuarioDAO usuarioDAO;
     private DAOFactoryService factoryService;
     private Usuario usuarioAutenticado;
-
+    public static GerenciadorUsuarioService instancia = null;
+    
     public GerenciadorUsuarioService() {
         this.factoryService = new DAOFactoryService();
         this.usuarioDAO = factoryService.getUsuarioDAO();
-        this.usuarioAutenticado = new AutenticacaoService().getUsuarioAutenticado();
+        this.usuarioAutenticado = Sessao.getInstancia().getUsuarioLogado();
     }
    
     public void inserir(String nome, String senha){
@@ -37,11 +38,11 @@ public class GerenciadorUsuarioService {
         if(listarTodos().isEmpty()){
            usuario.setTipo("admin");
            usuario.setAtivo(true);
-        }else if("admin".equalsIgnoreCase(usuarioAutenticado.getTipo())){
-            usuario.setAtivo(true);
+        }else if(usuarioAutenticado == null || !"admin".equalsIgnoreCase(usuarioAutenticado.getTipo())){
+            usuario.setAtivo(false);
             usuario.setTipo("padrao");
         }else{
-            usuario.setAtivo(false);
+            usuario.setAtivo(true);
             usuario.setTipo("padrao");
         }
         usuarioDAO.criar(usuario);

@@ -4,6 +4,7 @@
  */
 package persistence.Factory;
 
+import persistence.INotificacaoDAO;
 import persistence.IUsuarioDAO;
 
 /**
@@ -12,4 +13,5 @@ import persistence.IUsuarioDAO;
  */
 public interface IDAOFactory {
     public IUsuarioDAO getUsuarioDAO();
+    public INotificacaoDAO getNotificacaoDAO();
 }
