@@ -4,6 +4,8 @@
  */
 package presenter;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import state.usuario.InclusaoState;
 import state.usuario.UsuarioState;
 import view.UsuarioView;
@@ -21,19 +23,16 @@ public class UsuarioPresenter {
         this.estado = new InclusaoState(this);
     }
 
-    
-    private void configura(){
-        
-    }
-    
+   
     public UsuarioState getEstado() {
         return estado;
     }
 
     public void setEstado(UsuarioState estado) {
         this.estado = estado;
+    } 
+
+    public UsuarioView getView() {
+        return view;
     }
-    
-    
-    
 }

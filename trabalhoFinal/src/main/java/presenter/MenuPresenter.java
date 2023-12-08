@@ -40,8 +40,8 @@ public class MenuPresenter {
         view.getMenuNovoUsuario().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt){
-                UsuarioView usuarioV = new UsuarioView();
-                view.getjDesktopPane1().add(usuarioV).setVisible(true);
+                UsuarioPresenter presenter = new UsuarioPresenter();
+                view.getjDesktopPane1().add(presenter.getView()).setVisible(true);
             }
         });
         

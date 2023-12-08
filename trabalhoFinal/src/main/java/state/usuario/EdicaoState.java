@@ -5,6 +5,7 @@
 package state.usuario;
 
 import presenter.UsuarioPresenter;
+import view.UsuarioView;
 
 /**
  *
@@ -24,5 +25,14 @@ public class EdicaoState extends UsuarioState {
     @Override
     public void fechar(){
     
+    }
+    
+    @Override
+    public void configuraTela(){
+        UsuarioView view = presenter.getView();
+        
+        view.getBtnExcluir().setVisible(false);
+        view.getBtnEditar().setVisible(false);
+        view.setVisible(true);
     }
 }

@@ -29,4 +29,5 @@ public abstract class UsuarioState {
     public void fechar(){
         throw new RuntimeException("Não é possível realizar esta operacao.");
     }
+    public abstract void configuraTela();
 }
