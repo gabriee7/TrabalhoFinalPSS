@@ -37,7 +37,7 @@ public class MenuPresenter {
 //           
 //        }
 
-        view.getBtnUsuario().addActionListener(new ActionListener(){
+        view.getMenuNovoUsuario().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt){
                 UsuarioView usuarioV = new UsuarioView();
@@ -45,7 +45,9 @@ public class MenuPresenter {
             }
         });
         
-        view.getBtnNotificacao().addActionListener(new ActionListener(){
+
+
+        view.getMenuNovaNotificacao().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt){
                 NotificacaoView notificacaoV = new NotificacaoView();
@@ -53,7 +55,7 @@ public class MenuPresenter {
             }
         });
         
-        view.getBtnConfiguracao().addActionListener(new ActionListener(){
+        view.getMenuConta().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt){
                 ConfiguracaoView configuracaoV = new ConfiguracaoView();

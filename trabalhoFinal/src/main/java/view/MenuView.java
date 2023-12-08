@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -36,13 +37,16 @@ public class MenuView extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         labelUsuarioPrivilegio = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        btnUsuario = new javax.swing.JButton();
-        btnNotificacao = new javax.swing.JButton();
-        btnConfiguracao = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         textUsuarioMenuBar = new javax.swing.JMenu();
+        menuNovoUsuario = new javax.swing.JMenuItem();
+        menuVisualizarTodosUsuario = new javax.swing.JMenuItem();
+        menuAutorizacaoPendente = new javax.swing.JMenuItem();
         textNotificacoesMenuBar = new javax.swing.JMenu();
+        menuNovaNotificacao = new javax.swing.JMenuItem();
+        menuVisualizarTodasNotificacoes = new javax.swing.JMenuItem();
         textConfiguracaoMenuBar = new javax.swing.JMenu();
+        menuConta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -54,28 +58,43 @@ public class MenuView extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 496, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 486, Short.MAX_VALUE)
+            .addGap(0, 373, Short.MAX_VALUE)
         );
-
-        btnUsuario.setText("Usuario");
-
-        btnNotificacao.setText("Notificação");
-
-        btnConfiguracao.setText("Configuração");
 
         jMenuBar1.setToolTipText("");
 
         textUsuarioMenuBar.setText("Usuários");
+
+        menuNovoUsuario.setText("Novo");
+        textUsuarioMenuBar.add(menuNovoUsuario);
+
+        menuVisualizarTodosUsuario.setText("Visualizar todos");
+        textUsuarioMenuBar.add(menuVisualizarTodosUsuario);
+
+        menuAutorizacaoPendente.setText("Autorização pendente");
+        textUsuarioMenuBar.add(menuAutorizacaoPendente);
+
         jMenuBar1.add(textUsuarioMenuBar);
 
         textNotificacoesMenuBar.setText("Notificações");
+
+        menuNovaNotificacao.setText("Novo");
+        textNotificacoesMenuBar.add(menuNovaNotificacao);
+
+        menuVisualizarTodasNotificacoes.setText("Visualizar todas");
+        textNotificacoesMenuBar.add(menuVisualizarTodasNotificacoes);
+
         jMenuBar1.add(textNotificacoesMenuBar);
 
         textConfiguracaoMenuBar.setText("Configuração");
+
+        menuConta.setText("Conta");
+        textConfiguracaoMenuBar.add(menuConta);
+
         jMenuBar1.add(textConfiguracaoMenuBar);
 
         setJMenuBar(jMenuBar1);
@@ -84,31 +103,20 @@ public class MenuView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(labelUsuarioPrivilegio, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDesktopPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(btnNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(btnConfiguracao, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jDesktopPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUsuario)
-                    .addComponent(btnNotificacao)
-                    .addComponent(btnConfiguracao))
-                .addGap(33, 33, 33)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,28 +148,41 @@ public class MenuView extends javax.swing.JFrame {
         return jDesktopPane1;
     }
 
-    public JButton getBtnUsuario() {
-        return btnUsuario;
+    public JMenuItem getMenuConta() {
+        return menuConta;
     }
 
-    public JButton getBtnConfiguracao() {
-        return btnConfiguracao;
+    public JMenuItem getMenuNovaNotificacao() {
+        return menuNovaNotificacao;
     }
 
-    public JButton getBtnNotificacao() {
-        return btnNotificacao;
+    public JMenuItem getMenuNovoUsuario() {
+        return menuNovoUsuario;
+    }
+
+    public JMenuItem getMenuVisualizarTodasNotificacoes() {
+        return menuVisualizarTodasNotificacoes;
+    }
+
+    public JMenuItem getMenuVisualizarTodosUsuario() {
+        return menuVisualizarTodosUsuario;
     }
 
     
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConfiguracao;
-    private javax.swing.JButton btnNotificacao;
-    private javax.swing.JButton btnUsuario;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelUsuarioPrivilegio;
+    private javax.swing.JMenuItem menuAutorizacaoPendente;
+    private javax.swing.JMenuItem menuConta;
+    private javax.swing.JMenuItem menuNovaNotificacao;
+    private javax.swing.JMenuItem menuNovoUsuario;
+    private javax.swing.JMenuItem menuVisualizarTodasNotificacoes;
+    private javax.swing.JMenuItem menuVisualizarTodosUsuario;
     private javax.swing.JMenu textConfiguracaoMenuBar;
     private javax.swing.JMenu textNotificacoesMenuBar;
     private javax.swing.JMenu textUsuarioMenuBar;
