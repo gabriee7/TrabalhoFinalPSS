@@ -58,8 +58,17 @@ public class MenuPresenter {
         view.getMenuConta().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt){
-                ConfiguracaoView configuracaoV = new ConfiguracaoView();
-                view.getjDesktopPane1().add(configuracaoV).setVisible(true);
+                ConfiguracaoPresenter presenter = new ConfiguracaoPresenter();
+                view.getjDesktopPane1().add(presenter.getView()).setVisible(true);
+            }
+        });
+        
+        
+        view.getMenuVisualizarTodosUsuario().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt){
+                ListaUsuarioPresenter presenter = new ListaUsuarioPresenter();
+                view.getjDesktopPane1().add(presenter.getView()).setVisible(true);
             }
         });
         

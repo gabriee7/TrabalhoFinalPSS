@@ -49,6 +49,7 @@ public class InclusaoState extends UsuarioState{
     @Override
     public void fechar(){
         comando = new FecharCommand(presenter);
+        comando.executa();
     }
     
     @Override
