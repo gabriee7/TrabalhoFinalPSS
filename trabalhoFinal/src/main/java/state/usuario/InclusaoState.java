@@ -4,6 +4,7 @@
  */
 package state.usuario;
 
+import command.usuario.FecharCommand;
 import command.usuario.IUsuarioCommand;
 import command.usuario.SalvarCommand;
 import java.awt.event.ActionEvent;
@@ -37,17 +38,17 @@ public class InclusaoState extends UsuarioState{
         
         comando = new SalvarCommand(nome,senha);
         comando.executa();
-
+        
         view.getTextFieldNome().setText("");
         view.getTextFieldSenha().setText("");
         view.getTextFieldConfirmaSenha().setText("");
-
-        presenter.setEstado(new EdicaoState(presenter));
+        
+        presenter.setEstado(new VisualizacaoState(presenter, nome, senha));
     }
     
     @Override
     public void fechar(){
-        presenter.getView().setVisible(false);
+        comando = new FecharCommand(presenter);
     }
     
     @Override

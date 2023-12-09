@@ -15,6 +15,7 @@ public interface IUsuarioDAO {
     public boolean criar(Usuario usuario);
     public Usuario consultar(String nome);
     public void atualizar(Usuario usuario);
-    public boolean deletar(int id);
+    public boolean deletar(String nome);
     public List<Usuario> listarTodos();
+    public List<Usuario> listaInativo();
 }

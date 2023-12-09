@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -33,11 +34,11 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         btnFechar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnExcluir = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        labelNome = new javax.swing.JLabel();
         textFieldNome = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        labelSenha = new javax.swing.JLabel();
         textFieldSenha = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        labelConfirmaSenha = new javax.swing.JLabel();
         textFieldConfirmaSenha = new javax.swing.JTextField();
         btnEditar = new javax.swing.JButton();
 
@@ -58,14 +59,14 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
         btnExcluir.setText("Excluir");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setText("Nome");
+        labelNome.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelNome.setText("Nome");
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel4.setText("Senha");
+        labelSenha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelSenha.setText("Senha");
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel5.setText("Confirma Senha");
+        labelConfirmaSenha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelConfirmaSenha.setText("Confirma Senha");
 
         btnEditar.setText("Editar");
 
@@ -90,9 +91,9 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
+                            .addComponent(labelNome)
+                            .addComponent(labelSenha)
+                            .addComponent(labelConfirmaSenha)
                             .addComponent(textFieldConfirmaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                             .addComponent(textFieldSenha)
                             .addComponent(textFieldNome))
@@ -104,15 +105,15 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(labelNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(labelSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(labelConfirmaSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textFieldConfirmaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
@@ -155,6 +156,18 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         return textFieldSenha;
     }
 
+    public JLabel getLabelConfirmaSenha() {
+        return labelConfirmaSenha;
+    }
+
+    public JLabel getLabelNome() {
+        return labelNome;
+    }
+
+    public JLabel getLabelSenha() {
+        return labelSenha;
+    }
+
     
     
     
@@ -165,9 +178,9 @@ public class UsuarioView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel labelConfirmaSenha;
+    private javax.swing.JLabel labelNome;
+    private javax.swing.JLabel labelSenha;
     private javax.swing.JTextField textFieldConfirmaSenha;
     private javax.swing.JTextField textFieldNome;
     private javax.swing.JTextField textFieldSenha;

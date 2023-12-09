@@ -104,14 +104,14 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
     }
 
     @Override
-    public boolean deletar(int id) {
+    public boolean deletar(String nome) {
         Connection conexao = ConexaoService.getConexao();
 
         try {
-            String sql = "DELETE FROM usuario WHERE id = ?";
+            String sql = "DELETE FROM usuario WHERE nome = ?";
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
 
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, nome);
 
             int rowsAffected = preparedStatement.executeUpdate();
 
@@ -156,4 +156,36 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         return usuarios;
     }
     
+    
+    public List<Usuario> listaInativo(){
+        List<Usuario> usuarios = new ArrayList<>();
+
+        Connection conexao = ConexaoService.getConexao();
+
+        try {
+            String sql = "SELECT * FROM usuario WHERE ativo=false";
+            PreparedStatement preparaLista = conexao.prepareStatement(sql);
+
+            try (ResultSet resultSet = preparaLista.executeQuery()) {
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    String nome = resultSet.getString("nome");
+                    String senha = resultSet.getString("senha");
+                    String tipo = resultSet.getString("tipo");
+                    boolean ativo = resultSet.getBoolean("ativo");
+                    
+                    String dataCadastro = resultSet.getString("dataCadastro");
+                    
+                    Usuario usuario = new Usuario(nome, senha, tipo, dataCadastro);
+                    usuarios.add(usuario);
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            ConexaoService.closeConexao(conexao);
+        }
+
+        return usuarios;
+    }
 }

@@ -4,18 +4,21 @@
  */
 package command.usuario;
 
+import presenter.UsuarioPresenter;
+
 /**
  *
  * @author nitro5WIN10
  */
-public class FecharState implements IUsuarioCommand {
-
-    public FecharState() {
+public class FecharCommand implements IUsuarioCommand {
+    private UsuarioPresenter presenter;
+    
+    public FecharCommand(UsuarioPresenter presenter) {
+        this.presenter = presenter;
     }
     
     @Override
     public void executa(){
-        
-        
+        presenter.getView().setVisible(false);
     }
 }

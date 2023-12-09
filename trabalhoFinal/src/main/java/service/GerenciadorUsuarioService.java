@@ -52,8 +52,8 @@ public class GerenciadorUsuarioService {
         return usuarioDAO.listarTodos();
     }
    
-    public boolean excluir(int id){
-       return usuarioDAO.deletar(id);
+    public boolean excluir(String nome){
+       return usuarioDAO.deletar(nome);
     }
    
     public Usuario consultar(String nome){
