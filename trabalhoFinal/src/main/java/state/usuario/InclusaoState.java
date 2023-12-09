@@ -17,17 +17,31 @@ import view.UsuarioView;
  */
 public class InclusaoState extends UsuarioState{
     private IUsuarioCommand comando = null;
-    
+    UsuarioView view ;
+
     
     public InclusaoState(UsuarioPresenter presenter) {
         super(presenter);
+        this.view = presenter.getView();
         configuraTela();
     }
     
     @Override
     public void salvar(){
-        comando = new SalvarCommand();
+        String nome = view.getTextFieldNome().getText();
+        String senha = view.getTextFieldSenha().getText();
+        String confirmaSenha = view.getTextFieldConfirmaSenha().getText();
+        
+        if(!senha.equals(confirmaSenha))
+            throw new RuntimeException("Senhas não conferem!");
+        
+        comando = new SalvarCommand(nome,senha);
         comando.executa();
+
+        view.getTextFieldNome().setText("");
+        view.getTextFieldSenha().setText("");
+        view.getTextFieldConfirmaSenha().setText("");
+
         presenter.setEstado(new EdicaoState(presenter));
     }
     
@@ -38,7 +52,6 @@ public class InclusaoState extends UsuarioState{
     
     @Override
     public void configuraTela(){
-        UsuarioView view = presenter.getView();
         
         view.getBtnExcluir().setVisible(false);
         view.getBtnEditar().setVisible(false);
@@ -51,7 +64,7 @@ public class InclusaoState extends UsuarioState{
                 try{
                     salvar();
                 }catch(Exception e){
-                    throw new RuntimeException(e.getMessage());
+                    presenter.exibirMensagem(e.getMessage(), "Erro", 0);
                 }
             }
         });

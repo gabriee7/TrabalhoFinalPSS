@@ -4,19 +4,25 @@
  */
 package command.usuario;
 
+import service.GerenciadorUsuarioService;
+
 /**
  *
  * @author nitro5WIN10
  */
 public class SalvarCommand implements IUsuarioCommand {
-
-    public SalvarCommand() {
+    private GerenciadorUsuarioService service;
+    private String nome;
+    private String senha;
     
+    public SalvarCommand(String nome, String senha) {
+        service = new GerenciadorUsuarioService();
+        this.nome = nome;
+        this.senha = senha;
     }
-    
+
     @Override
     public void executa(){
-        
-        
+        service.inserir(nome, senha);
     }
 }
