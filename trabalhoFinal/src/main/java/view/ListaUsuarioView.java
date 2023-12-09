@@ -4,6 +4,7 @@
  */
 package view;
 
+import javax.swing.JButton;
 import javax.swing.JTable;
 
 /**
@@ -28,17 +29,11 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnFechar = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableTodosUsuarios = new javax.swing.JTable();
-        btnFechar1 = new javax.swing.JButton();
         btnVisualizaDetalhes = new javax.swing.JButton();
-
-        btnFechar.setText("Fechar");
-
-        btnSalvar.setText("Salvar");
+        btnFechar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -73,9 +68,9 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tableTodosUsuarios);
 
-        btnFechar1.setText("Fechar");
-
         btnVisualizaDetalhes.setText("Visualizar detalhes");
+
+        btnFechar.setText("Fechar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,9 +85,9 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
                         .addGap(173, 173, 173))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnVisualizaDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnFechar1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(38, 38, 38)
+                        .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,8 +98,8 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFechar1)
-                    .addComponent(btnVisualizaDetalhes))
+                    .addComponent(btnVisualizaDetalhes)
+                    .addComponent(btnFechar))
                 .addContainerGap())
         );
 
@@ -115,10 +110,18 @@ public class ListaUsuarioView extends javax.swing.JInternalFrame {
         return tableTodosUsuarios;
     }
 
+    public JButton getBtnFechar() {
+        return btnFechar;
+    }
+
+    public JButton getBtnVisualizaDetalhes() {
+        return btnVisualizaDetalhes;
+    }
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFechar;
-    private javax.swing.JButton btnFechar1;
-    private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVisualizaDetalhes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

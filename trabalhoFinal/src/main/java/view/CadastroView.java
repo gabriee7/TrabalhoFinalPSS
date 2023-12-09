@@ -123,10 +123,7 @@ public class CadastroView extends javax.swing.JFrame {
 
     public void setTextFieldSenha(JTextField textFieldSenha) {
         this.textFieldSenha = textFieldSenha;
-    }
-    
-    
-    
+    }  
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

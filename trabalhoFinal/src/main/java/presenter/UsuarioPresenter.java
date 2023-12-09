@@ -24,7 +24,6 @@ public class UsuarioPresenter {
         this.estado = new InclusaoState(this);
     }
 
-   
     public UsuarioState getEstado() {
         return estado;
     }
