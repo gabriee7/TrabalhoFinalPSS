@@ -24,7 +24,7 @@ public class InicializaBanco {
                     "senha TEXT," +
                     "tipo TEXT," +
                     "ativo BOOLEAN," +
-                    "dataCadastro DATE DEFAULT CURRENT_DATE);"+
+                    "dataCadastro TEXT);"+
 
                 "CREATE TABLE Notificacao ("+
                     "id_notificacao INT PRIMARY KEY,"+

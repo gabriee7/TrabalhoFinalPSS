@@ -33,7 +33,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
             preparedStatement.setString(2, senha);
             preparedStatement.setString(3,tipo);
             preparedStatement.setBoolean(4, ativo);
-            preparedStatement.setDate(5, java.sql.Date.valueOf(LocalDate.now()));
+            preparedStatement.setString(5, LocalDate.now().toString());
 
             int rowsAffected = preparedStatement.executeUpdate();
             
@@ -65,7 +65,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
                 usuarioEncontrado.setSenha(resultSet.getString("senha"));
                 usuarioEncontrado.setTipo(resultSet.getString("tipo"));
                 usuarioEncontrado.setAtivo(resultSet.getBoolean("ativo"));
-                usuarioEncontrado.setDataCadastro(resultSet.getDate("dataCadastro").toLocalDate());
+                usuarioEncontrado.setDataCadastro(resultSet.getString("dataCadastro"));
                 return usuarioEncontrado;
             }
 
@@ -141,7 +141,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
                     String tipo = resultSet.getString("tipo");
                     boolean ativo = resultSet.getBoolean("ativo");
                     
-                    LocalDate dataCadastro = resultSet.getDate("dataCadastro").toLocalDate();
+                    String dataCadastro = resultSet.getString("dataCadastro");
                     
                     Usuario usuario = new Usuario(nome, senha, tipo, dataCadastro);
                     usuarios.add(usuario);

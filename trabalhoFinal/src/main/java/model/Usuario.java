@@ -15,10 +15,10 @@ public class Usuario {
     private String senha;
     private String tipo;
     private boolean ativo;
-    private LocalDate dataCadastro;
+    private String dataCadastro;
     private int id;
 
-    public Usuario(String nome, String senha, String tipo, LocalDate data) {
+    public Usuario(String nome, String senha, String tipo, String data) {
         this.nome = nome;
         this.senha = senha;
         this.tipo = tipo;
@@ -78,11 +78,11 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    public LocalDate getDataCadastro() {
+    public String getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(LocalDate dataCadastro) {
+    public void setDataCadastro(String dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
     
