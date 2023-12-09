@@ -13,13 +13,21 @@ import java.sql.DriverManager;
  */
 public class ConexaoService {
     private static final String url = "jdbc:sqlite:trabalhoFinal.db";
+    private static Connection conexao;
 
+    public ConexaoService() {
+    
+    }
     public static Connection getConexao(){
-        try{
-            return DriverManager.getConnection(url);
-        }catch(Exception e){
-            throw new RuntimeException(e.getMessage());
+        if(conexao == null){
+            try{
+                conexao = DriverManager.getConnection(url);
+            }catch(Exception e){
+                throw new RuntimeException(e.getMessage());
+            }
         }
+        
+        return conexao;
     }
     
     public static void closeConexao(Connection connection){

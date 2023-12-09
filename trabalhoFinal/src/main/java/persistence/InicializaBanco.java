@@ -14,8 +14,9 @@ import java.sql.PreparedStatement;
 public class InicializaBanco {
 
     public static void inicializar() {
+        Connection conexao = null;
         try {
-            Connection conexao = ConexaoService.getConexao();
+            conexao = ConexaoService.getConexao();
             PreparedStatement preparaUsuario = conexao.prepareStatement(
                 "CREATE TABLE IF NOT EXISTS usuario (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -42,6 +43,8 @@ public class InicializaBanco {
             preparaUsuario.close();
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
+        } finally{
+            ConexaoService.closeConexao(conexao);
         }
     }
 }
