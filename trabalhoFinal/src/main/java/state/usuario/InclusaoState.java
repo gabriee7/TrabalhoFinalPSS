@@ -82,7 +82,10 @@ public class InclusaoState extends UsuarioState{
             }
         });
         
-
+        view.getTextFieldNotificacoesEnviadas().setVisible(false);
+        view.getTextFieldNotificacoesLidas().setVisible(false);
+        view.getLabelNotificacoesEnviadas().setVisible(false);
+        view.getLabelNotificacoesLidas().setVisible(false);
         view.setVisible(true);
     }
 }

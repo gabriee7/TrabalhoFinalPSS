@@ -30,6 +30,7 @@ public class UsuarioView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButton1 = new javax.swing.JRadioButton();
         btnSalvar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -41,6 +42,12 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         labelConfirmaSenha = new javax.swing.JLabel();
         textFieldConfirmaSenha = new javax.swing.JTextField();
         btnEditar = new javax.swing.JButton();
+        labelNotificacoesEnviadas = new javax.swing.JLabel();
+        textFieldNotificacoesEnviadas = new javax.swing.JTextField();
+        textFieldNotificacoesLidas = new javax.swing.JTextField();
+        labelNotificacoesLidas = new javax.swing.JLabel();
+
+        jRadioButton1.setText("jRadioButton1");
 
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setClosable(true);
@@ -70,6 +77,10 @@ public class UsuarioView extends javax.swing.JInternalFrame {
 
         btnEditar.setText("Editar");
 
+        labelNotificacoesEnviadas.setText("Notificações enviadas");
+
+        labelNotificacoesLidas.setText("Notificações lidas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,7 +108,13 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                             .addComponent(textFieldConfirmaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                             .addComponent(textFieldSenha)
                             .addComponent(textFieldNome))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNotificacoesEnviadas)
+                            .addComponent(textFieldNotificacoesEnviadas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelNotificacoesLidas)
+                            .addComponent(textFieldNotificacoesLidas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(262, 262, 262))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,13 +122,23 @@ public class UsuarioView extends javax.swing.JInternalFrame {
                 .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(labelNome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelSenha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelNome)
+                            .addComponent(labelNotificacoesEnviadas))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldNotificacoesEnviadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelSenha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelNotificacoesLidas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldNotificacoesLidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelConfirmaSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -168,6 +195,22 @@ public class UsuarioView extends javax.swing.JInternalFrame {
         return labelSenha;
     }
 
+    public JLabel getLabelNotificacoesEnviadas() {
+        return labelNotificacoesEnviadas;
+    }
+
+    public JLabel getLabelNotificacoesLidas() {
+        return labelNotificacoesLidas;
+    }
+
+    public JTextField getTextFieldNotificacoesEnviadas() {
+        return textFieldNotificacoesEnviadas;
+    }
+
+    public JTextField getTextFieldNotificacoesLidas() {
+        return textFieldNotificacoesLidas;
+    }
+
     
     
     
@@ -178,11 +221,16 @@ public class UsuarioView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JLabel labelConfirmaSenha;
     private javax.swing.JLabel labelNome;
+    private javax.swing.JLabel labelNotificacoesEnviadas;
+    private javax.swing.JLabel labelNotificacoesLidas;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JTextField textFieldConfirmaSenha;
     private javax.swing.JTextField textFieldNome;
+    private javax.swing.JTextField textFieldNotificacoesEnviadas;
+    private javax.swing.JTextField textFieldNotificacoesLidas;
     private javax.swing.JTextField textFieldSenha;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jRadioButton1"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
       <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -51,7 +58,7 @@
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="labelNome" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labelSenha" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -60,7 +67,14 @@
                           <Component id="textFieldSenha" alignment="0" max="32767" attributes="0"/>
                           <Component id="textFieldNome" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="labelNotificacoesEnviadas" min="-2" max="-2" attributes="0"/>
+                          <Component id="textFieldNotificacoesEnviadas" min="-2" pref="70" max="-2" attributes="0"/>
+                          <Component id="labelNotificacoesLidas" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textFieldNotificacoesLidas" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -72,13 +86,28 @@
               <EmptySpace pref="42" max="32767" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="labelNome" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="textFieldNome" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="labelSenha" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="textFieldSenha" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelNotificacoesEnviadas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="textFieldNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="textFieldNotificacoesEnviadas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="labelSenha" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="textFieldSenha" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="labelNotificacoesLidas" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="textFieldNotificacoesLidas" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="labelConfirmaSenha" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -152,6 +181,20 @@
     <Component class="javax.swing.JButton" name="btnEditar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Editar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelNotificacoesEnviadas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Notifica&#xe7;&#xf5;es enviadas"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="textFieldNotificacoesEnviadas">
+    </Component>
+    <Component class="javax.swing.JTextField" name="textFieldNotificacoesLidas">
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelNotificacoesLidas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Notifica&#xe7;&#xf5;es lidas"/>
       </Properties>
     </Component>
   </SubComponents>
