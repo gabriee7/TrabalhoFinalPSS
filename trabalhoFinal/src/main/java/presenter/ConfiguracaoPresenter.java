@@ -37,7 +37,18 @@ public class ConfiguracaoPresenter {
             @Override
             public void actionPerformed(ActionEvent evt){
                 try{
-                    
+                    alterarSenha();
+                }catch(Exception e){
+                    exibirMensagem(e.getMessage(), "Erro", 0);
+                }
+            }
+        });
+        
+        view.getBtnFechar().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt){
+                try{
+                    fechar();
                 }catch(Exception e){
                     exibirMensagem(e.getMessage(), "Erro", 0);
                 }
@@ -53,6 +64,10 @@ public class ConfiguracaoPresenter {
     
     private void alterarSenha(){
         
+    }
+    
+    private void fechar(){
+        view.setVisible(false);
     }
     
     public void exibirMensagem(String mensagem, String titulo, int type){
