@@ -4,6 +4,7 @@
  */
 package presenter;
 
+import javax.swing.JOptionPane;
 import state.notificacao.InclusaoState;
 import state.notificacao.NotificacaoState;
 
@@ -31,6 +32,10 @@ public class NotificacaoPresenter {
     
     private void configuraTela(){
     
+    }
+    
+    public void exibirMensagem(String mensagem, String titulo, int type){
+        JOptionPane.showMessageDialog(this.view, mensagem, titulo,type);
     }
     
 }

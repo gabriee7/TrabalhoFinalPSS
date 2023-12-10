@@ -18,4 +18,6 @@ public interface INotificacaoDAO {
     public void atualizar(Notificacao notificacao);
     public boolean deletar(int id);
     public List<Notificacao> listarTodos();
+    public List<Notificacao> listaPorUsuario(int idUsuario);
+    public List<Notificacao> listaLidas(int idUsuario);
 }

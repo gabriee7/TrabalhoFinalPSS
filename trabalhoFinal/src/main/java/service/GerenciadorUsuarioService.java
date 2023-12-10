@@ -30,6 +30,10 @@ public class GerenciadorUsuarioService {
         ValidadorSenha validador = new ValidadorSenha();
         List<String> resultValida = validador.validar(senha);
         
+        if(consultar(nome) != null){
+            throw new RuntimeException("Usuario já existe");
+        }
+        
         if(!resultValida.isEmpty()){
             throw new RuntimeException("Erro: \n" + resultValida.toString().replace(";", "\n").replace(",", "").replace("[", "").replace("]", ""));
         }
@@ -45,6 +49,7 @@ public class GerenciadorUsuarioService {
             usuario.setAtivo(true);
             usuario.setTipo("padrao");
         }
+
         usuarioDAO.criar(usuario);
     }
    

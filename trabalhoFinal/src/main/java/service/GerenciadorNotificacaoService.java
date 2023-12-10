@@ -35,8 +35,12 @@ public class GerenciadorNotificacaoService {
        
     }
     
-    public void consultar(){
+    public List<Notificacao> consultarTodasLidas(int id){
+        return notificacaoDAO.listaLidas(id);
+    }
     
+    public List<Notificacao> consultarTodasPorUsuario(int id){
+        return notificacaoDAO.listaPorUsuario(id);
     }
 
      

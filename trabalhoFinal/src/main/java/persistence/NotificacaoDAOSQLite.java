@@ -183,4 +183,71 @@ public class NotificacaoDAOSQLite implements INotificacaoDAO {
 
         return notificacoes;
     }
+    
+        public List<Notificacao> listaLidas(int idUsuario){
+            List<Notificacao> notificacoes = new ArrayList<>();
+            Connection conexao = ConexaoService.getConexao();
+        String sql = "SELECT n.* " +
+                     "FROM notificacao n " +
+                     "JOIN notificacaoUsuario nu ON n.id_notificacao = nu.id_notificacao " +
+                     "WHERE nu.id_usuario = ? AND nu.lida = ?";
+
+        try {
+             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+
+            preparedStatement.setInt(1, idUsuario);
+            preparedStatement.setBoolean(2, true);
+            
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int idNotificacao = resultSet.getInt("id_notificacao");
+                    String titulo = resultSet.getString("titulo");
+                    String mensagem = resultSet.getString("mensagem");
+
+                    Notificacao notificacao = new Notificacao(idNotificacao, titulo, mensagem);
+                    notificacoes.add(notificacao);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao obter notificações por usuário: " + e.getMessage());
+        }finally {
+            ConexaoService.closeConexao(conexao);
+        }
+
+        return notificacoes;
+    }
+    
+    public List<Notificacao> listaPorUsuario(int idUsuario){
+            List<Notificacao> notificacoes = new ArrayList<>();
+            Connection conexao = ConexaoService.getConexao();
+        String sql = "SELECT n.* " +
+                     "FROM notificacao n " +
+                     "JOIN notificacaoUsuario nu ON n.id_notificacao = nu.id_notificacao " +
+                     "WHERE nu.id_usuario = ?";
+
+        try {
+             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+
+            preparedStatement.setInt(1, idUsuario);
+            
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int idNotificacao = resultSet.getInt("id_notificacao");
+                    String titulo = resultSet.getString("titulo");
+                    String mensagem = resultSet.getString("mensagem");
+
+                    Notificacao notificacao = new Notificacao(idNotificacao, titulo, mensagem);
+                    notificacoes.add(notificacao);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao obter notificações por usuário: " + e.getMessage());
+        }finally {
+            ConexaoService.closeConexao(conexao);
+        }
+
+        return notificacoes;
+    }
 }

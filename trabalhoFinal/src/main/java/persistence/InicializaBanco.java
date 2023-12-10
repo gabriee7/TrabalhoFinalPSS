@@ -20,7 +20,6 @@ public class InicializaBanco {
             conexao = ConexaoService.getConexao();
             Statement preparaSql = conexao.createStatement();
 
-            // Criação da tabela notificacao
             preparaSql.execute(
                 "CREATE TABLE IF NOT EXISTS notificacao (" +
                 "id_notificacao INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -28,7 +27,6 @@ public class InicializaBanco {
                 "mensagem TEXT)"
             );
 
-            // Criação da tabela usuario
             preparaSql.executeUpdate(
                 "CREATE TABLE IF NOT EXISTS usuario (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -39,7 +37,6 @@ public class InicializaBanco {
                 "dataCadastro TEXT)"
             );
 
-            // Criação da tabela notificacaoUsuario
             preparaSql.execute(
                 "CREATE TABLE IF NOT EXISTS notificacaoUsuario (" +
                 "id_notificacao INT," +

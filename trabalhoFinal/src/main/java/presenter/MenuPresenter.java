@@ -52,6 +52,7 @@ public class MenuPresenter {
         if(!"admin".equalsIgnoreCase(usuarioAutenticado.getTipo())){
             view.getTextUsuarioMenuBar().setVisible(false);
             view.getTextNotificacoesMenuBar().setVisible(false);
+            view.getMenuVisualizarTodasNotificacoes().setVisible(false);
             view.getBtnNotificacoes().setVisible(true); // adicionar evento
         }else{
             view.getMenuVisualizarTodasNotificacoes().setVisible(true);

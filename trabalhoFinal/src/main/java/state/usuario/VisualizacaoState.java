@@ -10,6 +10,8 @@ import command.usuario.IUsuarioCommand;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import presenter.UsuarioPresenter;
+import service.GerenciadorNotificacaoService;
+import service.GerenciadorUsuarioService;
 import view.UsuarioView;
 
 /**
@@ -20,11 +22,15 @@ public class VisualizacaoState extends UsuarioState {
     private IUsuarioCommand comando = null;
     private String nome;
     private String senha;
+    private GerenciadorUsuarioService serviceUsuario;
+    private GerenciadorNotificacaoService serviceNotificacao;
     
     public VisualizacaoState(UsuarioPresenter presenter, String nome, String senha) {
         super(presenter);
         this.nome = nome;
         this.senha = senha;
+        this.serviceUsuario = new GerenciadorUsuarioService();
+        this.serviceNotificacao = new GerenciadorNotificacaoService();
         configuraTela();
     }
     
@@ -47,10 +53,15 @@ public class VisualizacaoState extends UsuarioState {
     
     @Override
     public void configuraTela(){
+        int id = serviceUsuario.consultar(nome).getId();
+        int enviada = serviceNotificacao.consultarTodasPorUsuario(id).size();
+        int lidas = serviceNotificacao.consultarTodasLidas(id).size();
         UsuarioView view = presenter.getView();
 
         view.setTitle("Visualização de Usuário");
         
+        view.getTextFieldNotificacoesEnviadas().setText(Integer.toString(enviada));
+        view.getTextFieldNotificacoesLidas().setText(Integer.toString(lidas));
         view.getTextFieldNome().setText(nome);
         view.getTextFieldSenha().setText(senha);
         

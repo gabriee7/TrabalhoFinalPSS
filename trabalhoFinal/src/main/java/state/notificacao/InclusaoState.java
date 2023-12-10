@@ -50,6 +50,8 @@ public class InclusaoState extends NotificacaoState {
         
         comando = new SalvarCommand(notificacao, nomeUsuarios);
         comando.executa();
+        
+        presenter.exibirMensagem("Noficacao salva com sucesso!", "Notificacao", 1);
     }
 
     @Override
