@@ -4,6 +4,10 @@
  */
 package presenter;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import model.Usuario;
 import service.Sessao;
 import view.ConfiguracaoView;
 
@@ -12,23 +16,34 @@ import view.ConfiguracaoView;
  * @author nitro5WIN10
  */
 public class ConfiguracaoPresenter {
-    private String nome;
-    private String dataCadastro;
+    private Usuario usuarioLogado;
     private ConfiguracaoView view;
     
     public ConfiguracaoPresenter() {
         this.view = new ConfiguracaoView();
-        this.nome = Sessao.getInstancia().getUsuarioLogado().getNome();
-        this.dataCadastro = Sessao.getInstancia().getUsuarioLogado().getDataCadastro();
+        this.usuarioLogado = Sessao.getInstancia().getUsuarioLogado();
         configura();
     }
     
     private void configura(){
         view.setVisible(false);
-        view.getTextFieldNome().setText(nome);
-        view.getTextFieldDataCadastro().setText(dataCadastro);
+        view.getTextFieldNome().setText(usuarioLogado.getNome());
+        view.getTextFieldDataCadastro().setText(usuarioLogado.getDataCadastro());
+        view.getBtnExcluir().setVisible(false);
         view.getTextFieldNome().setEnabled(false);
         view.getTextFieldDataCadastro().setEnabled(false);
+        
+        view.getBtnAlterarSenha().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt){
+                try{
+                    
+                }catch(Exception e){
+                    exibirMensagem(e.getMessage(), "Erro", 0);
+                }
+            }
+        });
+        
         view.setVisible(true);
     }
 
@@ -36,5 +51,16 @@ public class ConfiguracaoPresenter {
         return view;
     }
     
+    private void alterarSenha(){
+        
+    }
+    
+    public void exibirMensagem(String mensagem, String titulo, int type){
+        JOptionPane.showMessageDialog(this.view, mensagem, titulo,type);
+    }
+    
+    public int exibirConfirmacao(String mensagem, String titulo){
+        return JOptionPane.showConfirmDialog(null, mensagem, titulo, JOptionPane.YES_NO_OPTION);
+    }
     
 }

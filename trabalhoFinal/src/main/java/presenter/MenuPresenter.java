@@ -31,6 +31,14 @@ public class MenuPresenter {
     
     private void configura(){
         this.view.setVisible(false);
+        
+        if(!"admin".equalsIgnoreCase(usuarioAutenticado.getTipo())){
+            view.getTextUsuarioMenuBar().setVisible(false);
+            view.getTextNotificacoesMenuBar().setVisible(false);
+            view.getBtnNotificacoes().setVisible(true); // adicionar evento
+        }else{
+            view.getBtnNotificacoes().setVisible(false);
+        }
 
         view.getLabelUsuarioPrivilegio().setText("usuario: " + usuarioAutenticado.getNome() + " | privilégio: " + usuarioAutenticado.getTipo());
 //        if("padrao".equalsIgnoreCase(usuarioAutenticado.getTipo())){
@@ -68,6 +76,14 @@ public class MenuPresenter {
             @Override
             public void actionPerformed(ActionEvent evt){
                 ListaUsuarioPresenter presenter = new ListaUsuarioPresenter();
+                view.getjDesktopPane1().add(presenter.getView()).setVisible(true);
+            }
+        });
+        
+        view.getMenuAutorizacaoPendente().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt){
+                ListaInativosPresenter presenter = new ListaInativosPresenter();
                 view.getjDesktopPane1().add(presenter.getView()).setVisible(true);
             }
         });

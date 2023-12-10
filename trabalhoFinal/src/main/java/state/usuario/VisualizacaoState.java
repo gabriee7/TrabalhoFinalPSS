@@ -98,6 +98,8 @@ public class VisualizacaoState extends UsuarioState {
         view.getTextFieldNotificacoesEnviadas().setVisible(true);
         view.getTextFieldNotificacoesLidas().setVisible(true);
         view.getLabelNotificacoesEnviadas().setVisible(true);
+        view.getTextFieldNotificacoesEnviadas().setEnabled(false);
+        view.getTextFieldNotificacoesLidas().setEnabled(false);
         view.getLabelNotificacoesLidas().setVisible(true);
         view.getBtnExcluir().setVisible(true);
         view.getBtnEditar().setVisible(true);

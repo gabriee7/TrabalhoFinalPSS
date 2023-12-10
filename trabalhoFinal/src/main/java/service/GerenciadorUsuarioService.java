@@ -51,6 +51,10 @@ public class GerenciadorUsuarioService {
     public List<Usuario> listarTodos(){
         return usuarioDAO.listarTodos();
     }
+    
+    public List<Usuario> listaInativos(){
+        return usuarioDAO.listaInativo();
+    }
    
     public boolean excluir(String nome){
        return usuarioDAO.deletar(nome);

@@ -23,7 +23,11 @@ public class UsuarioPresenter {
         this.view = new UsuarioView();
         this.estado = new InclusaoState(this);
     }
-
+    
+    public UsuarioPresenter(UsuarioState estado) {
+        this.view = new UsuarioView();
+        this.estado = estado;
+    }
     public UsuarioState getEstado() {
         return estado;
     }

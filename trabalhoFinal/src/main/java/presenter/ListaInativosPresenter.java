@@ -17,11 +17,11 @@ import view.ListaUsuarioView;
  *
  * @author nitro5WIN10
  */
-public class ListaUsuarioPresenter {
+public class ListaInativosPresenter {
     private ListaUsuarioView view;
     private GerenciadorUsuarioService service;
 
-    public ListaUsuarioPresenter() {
+    public ListaInativosPresenter() {
         this.service = new GerenciadorUsuarioService();
         this.view = new ListaUsuarioView();
         configura();
@@ -60,12 +60,12 @@ public class ListaUsuarioPresenter {
                 }
             }
         });
-        view.getBtnAutorizar().setVisible(false);
+        
         view.setVisible(true);
     }
 
     public void atualizaTabela(DefaultTableModel modeloTabela){
-        List<Usuario> usuarios = service.listarTodos();
+        List<Usuario> usuarios = service.listaInativos();
 
         for(Usuario usuario:usuarios){
             Object[] dados = {usuario.getNome(), usuario.getDataCadastro()};
