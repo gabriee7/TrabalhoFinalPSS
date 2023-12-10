@@ -31,7 +31,7 @@ public class ListaInativosPresenter {
     
     private void configura(){
         DefaultTableModel modeloTabela = new DefaultTableModel();
-        view.setTitle("Listar Usuarios");
+        view.setTitle("Listar Usuarios Inativos");
         view.getTableTodosUsuarios().setModel(modeloTabela);
         modeloTabela.addColumn("Nome");
         modeloTabela.addColumn("Data de Cadastro");

@@ -7,11 +7,8 @@ package presenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Usuario;
-import service.GerenciadorUsuarioService;
-import view.ConfiguracaoView;
 import view.MenuView;
-import view.NotificacaoView;
-import view.UsuarioView;
+
 
 /**
  *
@@ -20,13 +17,11 @@ import view.UsuarioView;
 public class MenuPresenter {
     MenuView view;
     Usuario usuarioAutenticado;
-    GerenciadorUsuarioService gerenciadorUsuario;
     public static MenuPresenter instancia = null;
     
     private MenuPresenter(Usuario usuario) {
         this.view = new MenuView();
         this.usuarioAutenticado = usuario;
-        this.gerenciadorUsuario = new GerenciadorUsuarioService();
         configura();
     }
     
@@ -53,16 +48,14 @@ public class MenuPresenter {
             view.getTextUsuarioMenuBar().setVisible(false);
             view.getTextNotificacoesMenuBar().setVisible(false);
             view.getMenuVisualizarTodasNotificacoes().setVisible(false);
-            view.getBtnNotificacoes().setVisible(true); // adicionar evento
+            view.getBtnNotificacoes().setVisible(true); 
         }else{
             view.getMenuVisualizarTodasNotificacoes().setVisible(true);
             view.getBtnNotificacoes().setVisible(false);
         }
 
         view.getLabelUsuarioPrivilegio().setText("usuario: " + usuarioAutenticado.getNome() + " | privilégio: " + usuarioAutenticado.getTipo());
-//        if("padrao".equalsIgnoreCase(usuarioAutenticado.getTipo())){
-//           
-//        }
+
 
         view.getMenuNovoUsuario().addActionListener(new ActionListener(){
             @Override

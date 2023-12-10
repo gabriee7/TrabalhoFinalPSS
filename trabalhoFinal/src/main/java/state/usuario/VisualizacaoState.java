@@ -9,6 +9,7 @@ import command.usuario.FecharCommand;
 import command.usuario.IUsuarioCommand;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import presenter.UsuarioPresenter;
 import service.GerenciadorNotificacaoService;
 import service.GerenciadorUsuarioService;
@@ -36,9 +37,18 @@ public class VisualizacaoState extends UsuarioState {
     
     @Override
     public void excluir(){
-        comando = new ExcluirCommand(nome);
-        comando.executa();
+        String nome = presenter.getView().getTextFieldNome().getText();
+        int confirm = presenter.exibirConfirmacao("Deseja realmente excluir " + nome.toUpperCase() + "?", "Excluir", 0);
+        
+        if(confirm == JOptionPane.YES_OPTION){
+            comando = new ExcluirCommand(nome);
+            comando.executa();
+            presenter.exibirMensagem("Excluido com sucesso", "Exclusão", 1);
+        }
+        
+        presenter.setEstado(new InclusaoState(presenter));
     }
+    
     
     @Override
     public void editar(){
@@ -72,13 +82,17 @@ public class VisualizacaoState extends UsuarioState {
         view.getTextFieldSenha().setEnabled(false);
   
 
+        for (ActionListener listener : view.getBtnExcluir().getActionListeners()) {
+            view.getBtnExcluir().removeActionListener(listener);
+        }
+        
         view.getBtnExcluir().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt){
                 try{
                     excluir();
                 }catch(Exception e){
-                    presenter.exibirMensagem(e.getMessage(), "Erro", 0);
+                    presenter.exibirMensagem(e.getMessage(), "Erro", 1);
                 }
             }
         });

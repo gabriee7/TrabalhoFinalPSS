@@ -43,4 +43,9 @@ public class UsuarioPresenter {
     public void exibirMensagem(String mensagem, String titulo, int type){
         JOptionPane.showMessageDialog(this.view, mensagem, titulo,type);
     }
+    
+    public int exibirConfirmacao(String mensagem, String titulo, int type){
+        int retorno = JOptionPane.showConfirmDialog(this.view, mensagem, titulo,type);
+        return retorno;
+    }
 }

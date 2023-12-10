@@ -57,7 +57,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
             ResultSet resultSet = preparedStatement.executeQuery(); 
             
             if(!resultSet.next()){
-                throw new RuntimeException("Usuário não existe!");
+                return null;
             }else{
                 Usuario usuarioEncontrado = new Usuario();
                 usuarioEncontrado.setId(resultSet.getInt("id"));
@@ -140,7 +140,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
             int rowsAffected = preparedStatement.executeUpdate();
 
             if (rowsAffected <= 0) {
-                throw new RuntimeException("Erro ao tentar alterar senh");
+                throw new RuntimeException("Erro ao tentar alterar senha");
             }
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());

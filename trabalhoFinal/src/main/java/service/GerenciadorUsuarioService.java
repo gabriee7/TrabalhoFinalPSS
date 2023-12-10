@@ -62,6 +62,9 @@ public class GerenciadorUsuarioService {
     }
    
     public boolean excluir(String nome){
+       if("admin".equalsIgnoreCase(consultar(nome).getTipo()))
+           throw new RuntimeException("Não é possível excluir o admin");
+           
        return usuarioDAO.deletar(nome);
     }
    
