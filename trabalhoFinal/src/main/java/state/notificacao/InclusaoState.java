@@ -42,10 +42,14 @@ public class InclusaoState extends NotificacaoState {
         String mensagem = view.getTextAreaMensagem().getText();
         Usuario temp;
 
+        
         for(Usuario elem: nomeUsuarios){
             elem.setId((serviceUsuario.consultar(elem.getNome()).getId()));
         }
-
+       
+        if("".equals(titulo) && "".equals(mensagem) && nomeUsuarios.isEmpty())
+        throw new RuntimeException("Campos vazios! Verifique novamente.");
+            
         Notificacao notificacao = new Notificacao(titulo, mensagem);
         
         comando = new SalvarCommand(notificacao, nomeUsuarios);
@@ -76,7 +80,6 @@ public class InclusaoState extends NotificacaoState {
     private void adicionarUsuario(){
         int i = view.getTableUsuarios().getSelectedRow();
         String nome =view.getTableUsuarios().getValueAt(i,0).toString();
-//        nomeUsuarios.add(view.getTableUsuarios().getValueAt(i,0).toString());
         nomeUsuarios.add(new Usuario(nome, null));
         usuarioAdicionados += nome + "\n";
         view.getTextAreaUsuarios().setText(usuarioAdicionados);
@@ -93,6 +96,7 @@ public class InclusaoState extends NotificacaoState {
         
         view.getBtnExcluir().setVisible(false);
         view.getBtnEditar().setVisible(false);
+        view.getTextAreaUsuarios().setEditable(false);
         
         
         view.getTableUsuarios().setRowSelectionAllowed(false);
