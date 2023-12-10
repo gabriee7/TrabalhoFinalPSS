@@ -33,7 +33,6 @@
             <artifactId>dotenv-java</artifactId>
             <version>3.0.0</version>
         </dependency>
-        
         <dependency>
 	    <groupId>com.github.claytonfraga</groupId>
 	    <artifactId>validadorsenha</artifactId>
@@ -43,9 +42,9 @@
     </dependencies>
 
     <repositories>
-            <repository>
-                <id>jitpack.io</id>
-                <url>https://jitpack.io</url>
-            </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 </project>

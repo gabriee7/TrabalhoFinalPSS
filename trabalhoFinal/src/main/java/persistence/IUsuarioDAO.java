@@ -15,6 +15,8 @@ public interface IUsuarioDAO {
     public boolean criar(Usuario usuario);
     public Usuario consultar(String nome);
     public void atualizar(Usuario usuario);
+    public void alterarSenha(String nome, String senha);
+    public void autorizar(String nome);
     public boolean deletar(String nome);
     public List<Usuario> listarTodos();
     public List<Usuario> listaInativo();

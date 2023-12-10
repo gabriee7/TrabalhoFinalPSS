@@ -63,8 +63,19 @@ public class GerenciadorUsuarioService {
     public Usuario consultar(String nome){
        return usuarioDAO.consultar(nome);
     }
+    
+    public void autorizar(String nome){
+        usuarioDAO.autorizar(nome);
+    }
    
-    public void alterarSenha(Usuario usuario){
-       usuarioDAO.atualizar(usuario);
+    public void alterarSenha(String nome, String senha){
+        ValidadorSenha validador = new ValidadorSenha();
+        List<String> resultValida = validador.validar(senha);
+        
+        if(!resultValida.isEmpty()){
+            throw new RuntimeException("Erro: \n" + resultValida.toString().replace(";", "\n").replace(",", "").replace("[", "").replace("]", ""));
+        }
+        
+       usuarioDAO.alterarSenha(nome, senha);
     }
 }

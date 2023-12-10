@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Usuario;
 import service.GerenciadorUsuarioService;
+import state.usuario.VisualizacaoState;
 import view.ListaUsuarioView;
 
 /**
@@ -86,8 +87,9 @@ public class ListaUsuarioPresenter {
         
         String nome = modeloTabela.getValueAt(linhaSelecionada, 0).toString();
         UsuarioPresenter visualizaPresenter = new UsuarioPresenter();
-        visualizaPresenter.getView().setVisible(true);
-//        visualizaPresenter.setEstado(new VisualizacaoState(visualizaPresenter, nome,null));
+        
+        visualizaPresenter.setEstado(new VisualizacaoState(visualizaPresenter, nome,null));
+        MenuPresenter.getInstancia().getView().getjDesktopPane1().add(visualizaPresenter.getView());
 
     }
     

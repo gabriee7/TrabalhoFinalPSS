@@ -21,13 +21,30 @@ public class MenuPresenter {
     MenuView view;
     Usuario usuarioAutenticado;
     GerenciadorUsuarioService gerenciadorUsuario;
+    public static MenuPresenter instancia = null;
     
-    public MenuPresenter(Usuario usuario) {
+    private MenuPresenter(Usuario usuario) {
         this.view = new MenuView();
         this.usuarioAutenticado = usuario;
         this.gerenciadorUsuario = new GerenciadorUsuarioService();
         configura();
     }
+    
+    public static MenuPresenter getInstancia(Usuario usuario){
+        if(instancia == null){
+            instancia = new MenuPresenter(usuario);
+        }
+        return instancia;
+    }
+    
+    public static MenuPresenter getInstancia(){
+        return instancia;
+    }
+    public MenuView getView() {
+        return view;
+    }
+    
+    
     
     private void configura(){
         this.view.setVisible(false);
@@ -37,6 +54,7 @@ public class MenuPresenter {
             view.getTextNotificacoesMenuBar().setVisible(false);
             view.getBtnNotificacoes().setVisible(true); // adicionar evento
         }else{
+            view.getMenuVisualizarTodasNotificacoes().setVisible(true);
             view.getBtnNotificacoes().setVisible(false);
         }
 

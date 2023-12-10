@@ -37,7 +37,7 @@ public class LoginPresenter {
             throw new RuntimeException("Campo vazio!");
             
         if(usuario != null){
-            MenuPresenter menu = new  MenuPresenter(usuario);
+            MenuPresenter menu = MenuPresenter.getInstancia(usuario);
             this.view.setVisible(false);
         }
     }

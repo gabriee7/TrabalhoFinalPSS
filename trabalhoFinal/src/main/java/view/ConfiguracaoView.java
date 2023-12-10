@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -37,6 +38,13 @@ public class ConfiguracaoView extends javax.swing.JInternalFrame {
         btnExcluir = new javax.swing.JButton();
         btnAlterarSenha = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        labelSenhaAtual = new javax.swing.JLabel();
+        textFieldSenhaAtual = new javax.swing.JTextField();
+        labelNovaSenha = new javax.swing.JLabel();
+        textFieldNovaSenha = new javax.swing.JTextField();
+        labelConfirmaSenha = new javax.swing.JLabel();
+        textFieldConfirmaSenha = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -58,6 +66,14 @@ public class ConfiguracaoView extends javax.swing.JInternalFrame {
 
         btnFechar.setText("Fechar");
 
+        btnSalvar.setText("Salvar");
+
+        labelSenhaAtual.setText("Senha atual");
+
+        labelNovaSenha.setText("Nova senha");
+
+        labelConfirmaSenha.setText("Confirma senha");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,20 +83,29 @@ public class ConfiguracaoView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                        .addComponent(btnAlterarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addComponent(btnAlterarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(textFieldDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(117, 117, 117)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelSenhaAtual)
+                            .addComponent(labelNovaSenha)
+                            .addComponent(textFieldNovaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldSenhaAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelConfirmaSenha)
+                            .addComponent(textFieldConfirmaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(264, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(255, 255, 255))
         );
@@ -90,18 +115,34 @@ public class ConfiguracaoView extends javax.swing.JInternalFrame {
                 .addGap(52, 52, 52)
                 .addComponent(jLabel1)
                 .addGap(35, 35, 35)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(labelSenhaAtual))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldSenhaAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(labelNovaSenha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldNovaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelConfirmaSenha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldConfirmaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir)
                     .addComponent(btnAlterarSenha)
-                    .addComponent(btnFechar))
+                    .addComponent(btnFechar)
+                    .addComponent(btnSalvar))
                 .addGap(17, 17, 17))
         );
 
@@ -128,14 +169,51 @@ public class ConfiguracaoView extends javax.swing.JInternalFrame {
         return textFieldNome;
     }
 
+    public JButton getBtnSalvar() {
+        return btnSalvar;
+    }
+
+    public JLabel getLabelConfirmaSenha() {
+        return labelConfirmaSenha;
+    }
+
+    public JLabel getLabelNovaSenha() {
+        return labelNovaSenha;
+    }
+
+    public JLabel getLabelSenhaAtual() {
+        return labelSenhaAtual;
+    }
+
+    public JTextField getTextFieldConfirmaSenha() {
+        return textFieldConfirmaSenha;
+    }
+
+    public JTextField getTextFieldNovaSenha() {
+        return textFieldNovaSenha;
+    }
+
+    public JTextField getTextFieldSenhaAtual() {
+        return textFieldSenhaAtual;
+    }
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterarSenha;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFechar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel labelConfirmaSenha;
+    private javax.swing.JLabel labelNovaSenha;
+    private javax.swing.JLabel labelSenhaAtual;
+    private javax.swing.JTextField textFieldConfirmaSenha;
     private javax.swing.JTextField textFieldDataCadastro;
     private javax.swing.JTextField textFieldNome;
+    private javax.swing.JTextField textFieldNovaSenha;
+    private javax.swing.JTextField textFieldSenhaAtual;
     // End of variables declaration//GEN-END:variables
 }

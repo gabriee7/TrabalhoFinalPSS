@@ -102,7 +102,53 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
             ConexaoService.closeConexao(conexao);
         }
     }
+    
+    @Override 
+    public void alterarSenha(String nome, String senha){
+            Connection conexao = ConexaoService.getConexao();
 
+        try {
+            String sql = "UPDATE usuario SET senha = ? WHERE nome = ?";
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+
+            preparedStatement.setString(1, senha);
+            preparedStatement.setString(2, nome);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected <= 0) {
+                throw new RuntimeException("Erro ao tentar alterar senh");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            ConexaoService.closeConexao(conexao);
+        }
+    }
+
+    @Override 
+    public void autorizar(String nome){
+            Connection conexao = ConexaoService.getConexao();
+
+        try {
+            String sql = "UPDATE usuario SET ativo = ? WHERE nome = ?";
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+
+            preparedStatement.setBoolean(1, true);
+            preparedStatement.setString(2, nome);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected <= 0) {
+                throw new RuntimeException("Erro ao tentar alterar senh");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            ConexaoService.closeConexao(conexao);
+        }
+    }
+    
     @Override
     public boolean deletar(String nome) {
         Connection conexao = ConexaoService.getConexao();
