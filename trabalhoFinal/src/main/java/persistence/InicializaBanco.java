@@ -6,6 +6,7 @@ package persistence;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 
 /**
  *
@@ -17,30 +18,38 @@ public class InicializaBanco {
         Connection conexao = null;
         try {
             conexao = ConexaoService.getConexao();
-            PreparedStatement preparaUsuario = conexao.prepareStatement(
-                "CREATE TABLE IF NOT EXISTS usuario (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "nome TEXT UNIQUE," +
-                    "senha TEXT," +
-                    "tipo TEXT," +
-                    "ativo BOOLEAN," +
-                    "dataCadastro TEXT);"+
+            Statement preparaSql = conexao.createStatement();
 
-                "CREATE TABLE Notificacao ("+
-                    "id_notificacao INT PRIMARY KEY,"+
-                    "titulo VARCHAR(255),"+
-                    "mensagem TEXT,"+
-
-                "CREATE TABLE NotificacaoUsuario ("+
-                    "id_notificacao INT,"+
-                    "id_usuario INT,"+
-                    "lida BOOLEAN,"+
-                    "PRIMARY KEY (id_notificacao, id_usuario),"+
-                    "FOREIGN KEY (id_notificacao) REFERENCES Notificacao(id_notificacao),"+
-                    "FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario));"
+            // Criação da tabela notificacao
+            preparaSql.execute(
+                "CREATE TABLE IF NOT EXISTS notificacao (" +
+                "id_notificacao INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "titulo VARCHAR(255)," +
+                "mensagem TEXT)"
             );
-            preparaUsuario.executeUpdate();
-            preparaUsuario.close();
+
+            // Criação da tabela usuario
+            preparaSql.executeUpdate(
+                "CREATE TABLE IF NOT EXISTS usuario (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "nome TEXT UNIQUE," +
+                "senha TEXT," +
+                "tipo TEXT," +
+                "ativo BOOLEAN," +
+                "dataCadastro TEXT)"
+            );
+
+            // Criação da tabela notificacaoUsuario
+            preparaSql.execute(
+                "CREATE TABLE IF NOT EXISTS notificacaoUsuario (" +
+                "id_notificacao INT," +
+                "id_usuario INT," +
+                "lida BOOLEAN," +
+                "PRIMARY KEY (id_notificacao, id_usuario)," +
+                "FOREIGN KEY (id_notificacao) REFERENCES notificacao(id_notificacao)," +
+                "FOREIGN KEY (id_usuario) REFERENCES usuario(id))"
+            );
+            preparaSql.close();
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         } finally{

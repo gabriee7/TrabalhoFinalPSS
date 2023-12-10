@@ -89,7 +89,7 @@ public class ListaUsuarioPresenter {
         String nome = modeloTabela.getValueAt(linhaSelecionada, 0).toString();
         UsuarioPresenter visualizaPresenter = new UsuarioPresenter();
         visualizaPresenter.getView().setVisible(false);
-        visualizaPresenter.setEstado(new VisualizacaoState(visualizaPresenter, nome, "ew"));
+        visualizaPresenter.setEstado(new VisualizacaoState(visualizaPresenter, nome, null));
         visualizaPresenter.getView().setVisible(true);
     }
     

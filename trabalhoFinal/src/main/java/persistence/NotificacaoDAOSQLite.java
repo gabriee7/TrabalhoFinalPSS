@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import model.Notificacao;
@@ -19,7 +20,7 @@ import model.Usuario;
 public class NotificacaoDAOSQLite implements INotificacaoDAO {
 
     @Override
-    public boolean criar(Notificacao notificacao) {
+    public boolean criar(Notificacao notificacao, List<Usuario> usuariosPadrao) {
         Connection conexao = ConexaoService.getConexao();
 
         try {
@@ -28,17 +29,55 @@ public class NotificacaoDAOSQLite implements INotificacaoDAO {
             String titulo = notificacao.getTitulo();
             String mensagem = notificacao.getMensagem();
 
-            try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
+            try (PreparedStatement preparedStatement = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 preparedStatement.setString(1, titulo);
                 preparedStatement.setString(2, mensagem);
 
                 int rowsAffected = preparedStatement.executeUpdate();
-                return rowsAffected > 0; // true se a inserção for bem-sucedida
+
+                if (rowsAffected > 0) {
+
+                    try (Statement statement = conexao.createStatement()) {
+                    ResultSet rs = statement.executeQuery("SELECT last_insert_rowid()");
+                    if (rs.next()) {
+                        int idNotificacao = rs.getInt(1);
+                        associarNotificacaoUsuarios(idNotificacao, usuariosPadrao);
+                    } else {
+                        throw new RuntimeException("Falha ao obter a chave gerada automaticamente.");
+                    }
+
+                }catch(Exception e){
+                    System.out.println("rro: " + e.getMessage());
+                }
+                }
+                return rowsAffected > 0;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         } finally {
             ConexaoService.closeConexao(conexao);
+        }
+    }
+
+    private void associarNotificacaoUsuarios(int idNotificacao, List<Usuario> usuarios) {
+        Connection conexao = ConexaoService.getConexao();
+
+        try {
+            // Consulta SQL para associar notificação aos usuários do tipo "padrao"
+            String sql = "INSERT INTO notificacaoUsuario (id_notificacao, id_usuario, lida) VALUES (?, ?, ?)";
+
+            try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
+
+
+                for (Usuario usuario : usuarios) {
+                    preparedStatement.setInt(1, idNotificacao);
+                    preparedStatement.setInt(2, usuario.getId());
+                    preparedStatement.setBoolean(3, false);
+                    preparedStatement.executeUpdate();
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
         }
     }
 

@@ -6,13 +6,14 @@ package persistence;
 
 import java.util.List;
 import model.Notificacao;
+import model.Usuario;
 
 /**
  *
  * @author nitro5WIN10
  */
 public interface INotificacaoDAO {
-    public boolean criar(Notificacao notificacao);
+    public boolean criar(Notificacao notificacao, List<Usuario> usuariosPadrao);
     public Notificacao consultar(int id);
     public void atualizar(Notificacao notificacao);
     public boolean deletar(int id);

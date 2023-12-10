@@ -18,7 +18,7 @@ import view.UsuarioView;
  */
 public class InclusaoState extends UsuarioState{
     private IUsuarioCommand comando = null;
-    UsuarioView view ;
+    UsuarioView view;
 
     
     public InclusaoState(UsuarioPresenter presenter) {

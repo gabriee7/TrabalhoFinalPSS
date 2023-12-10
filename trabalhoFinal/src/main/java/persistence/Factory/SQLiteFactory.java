@@ -19,6 +19,7 @@ public class SQLiteFactory implements IDAOFactory {
         return new UsuarioDAOSQLite();
     }
     
+    @Override
     public INotificacaoDAO getNotificacaoDAO(){
         return new NotificacaoDAOSQLite();
     }

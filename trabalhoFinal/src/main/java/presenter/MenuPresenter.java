@@ -50,8 +50,8 @@ public class MenuPresenter {
         view.getMenuNovaNotificacao().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt){
-                NotificacaoView notificacaoV = new NotificacaoView();
-                view.getjDesktopPane1().add(notificacaoV).setVisible(true);
+                NotificacaoPresenter presenter = new NotificacaoPresenter();
+                view.getjDesktopPane1().add(presenter.getView()).setVisible(true);
             }
         });
         
