@@ -9,6 +9,8 @@ import model.Notificacao;
 import model.Usuario;
 import persistence.Factory.DAOFactoryService;
 import persistence.INotificacaoDAO;
+import com.log. *; // repositorio github projeto maven externo com jitpack
+import log.LogAdapter;
 
 /**
  *
@@ -17,14 +19,18 @@ import persistence.INotificacaoDAO;
 public class GerenciadorNotificacaoService {
     private INotificacaoDAO notificacaoDAO;
     private DAOFactoryService factoryService;
-
+    private LogService log;
+    
     public GerenciadorNotificacaoService() {
+        this.log = new LogService("com.log.CSVLog");
         this.factoryService = new DAOFactoryService();
         this.notificacaoDAO = factoryService.getNotificacaoDAO();
     }
     
-    public boolean inserir(Notificacao notificacao, List<Usuario> usuariosPadrao){    
-        return notificacaoDAO.criar(notificacao, usuariosPadrao);
+    public boolean inserir(Notificacao notificacao, List<Usuario> usuariosPadrao){
+        boolean retorno = notificacaoDAO.criar(notificacao, usuariosPadrao);
+        LogAdapter.getInstancia().addLog("Envio de Notificacao: ", notificacao.getTitulo());
+        return retorno;
     }
     
     public List<Notificacao> listarTodas(){
@@ -37,6 +43,7 @@ public class GerenciadorNotificacaoService {
     
     public void marcaLida(Notificacao notificacao){
         notificacaoDAO.marcaLida(notificacao);
+        LogAdapter.getInstancia().addLog("Leitura Notificacao: ", notificacao.getTitulo());
     }
     
     public List<Notificacao> consultarTodasLidas(int id){

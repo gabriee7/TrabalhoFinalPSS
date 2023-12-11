@@ -4,6 +4,7 @@
  */
 package service;
 
+import log.LogAdapter;
 import model.Usuario;
 
 /**
@@ -30,11 +31,12 @@ public class AutenticacaoService {
                 throw new RuntimeException("Não é possível realizar login, seu usuário permance inativo até que um administrador aprove seu cadastro.");
             }else if(senha.equals(usuario.getSenha())) {
                 Sessao.getInstancia().setUsuarioLogado(usuario); 
+                LogAdapter.getInstancia().addLog("Autenticação: ","Sucesso!");
                 return usuario;
             }else{
                 throw new RuntimeException("Senha Incorreta!");
             }
-            
+
 
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());

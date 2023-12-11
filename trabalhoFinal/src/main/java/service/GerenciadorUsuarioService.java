@@ -5,6 +5,7 @@
 package service;
 import com.pss.senha.validacao.ValidadorSenha;
 import java.util.List;
+import log.LogAdapter;
 import model.Usuario;
 import persistence.Factory.DAOFactoryService;
 import persistence.IUsuarioDAO;
@@ -31,6 +32,7 @@ public class GerenciadorUsuarioService {
         List<String> resultValida = validador.validar(senha);
         
         if(consultar(nome) != null){
+            LogAdapter.getInstancia().addLog("Insercao de Usuario: ", "Err: Usuario já existe");
             throw new RuntimeException("Usuario já existe");
         }
         
@@ -49,7 +51,7 @@ public class GerenciadorUsuarioService {
             usuario.setAtivo(true);
             usuario.setTipo("padrao");
         }
-
+        LogAdapter.getInstancia().addLog("Insercao de Usuario: ", "Sucesso Usuario "+ nome);
         usuarioDAO.criar(usuario);
     }
    
@@ -64,8 +66,10 @@ public class GerenciadorUsuarioService {
     public boolean excluir(String nome){
        if("admin".equalsIgnoreCase(consultar(nome).getTipo()))
            throw new RuntimeException("Não é possível excluir o admin");
-           
-       return usuarioDAO.deletar(nome);
+        
+       boolean retorno = usuarioDAO.deletar(nome);
+       LogAdapter.getInstancia().addLog("Exclusao de Usuario: ", "Sucesso Usuario "+ nome);
+       return retorno;
     }
    
     public Usuario consultar(String nome){
@@ -74,6 +78,7 @@ public class GerenciadorUsuarioService {
     
     public void autorizar(String nome){
         usuarioDAO.autorizar(nome);
+        LogAdapter.getInstancia().addLog("Autorizacao de Usuario: ", "Sucesso Usuario "+ nome);
     }
    
     public void alterarSenha(String nome, String senha){
@@ -85,5 +90,6 @@ public class GerenciadorUsuarioService {
         }
         
        usuarioDAO.alterarSenha(nome, senha);
+       LogAdapter.getInstancia().addLog("Alteração de Senha: ", "Sucesso Usuario "+ nome);
     }
 }
