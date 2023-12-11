@@ -132,6 +132,29 @@ public class NotificacaoDAOSQLite implements INotificacaoDAO {
             ConexaoService.closeConexao(conexao);
         }
     }
+    
+    @Override
+    public void marcaLida(Notificacao notificacao) {
+        Connection conexao = ConexaoService.getConexao();
+
+        try {
+            // Consulta SQL para atualizar uma notificação
+            String sql = "UPDATE notificacaoUsuario SET lida = ? WHERE id_notificacao = ?";
+            boolean lida = true;
+            int id = notificacao.getId();
+
+            try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
+                preparedStatement.setBoolean(1, lida);
+                preparedStatement.setInt(2, id);
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            ConexaoService.closeConexao(conexao);
+        }
+    }
 
     @Override
     public boolean deletar(int id) {
@@ -187,13 +210,13 @@ public class NotificacaoDAOSQLite implements INotificacaoDAO {
         public List<Notificacao> listaLidas(int idUsuario){
             List<Notificacao> notificacoes = new ArrayList<>();
             Connection conexao = ConexaoService.getConexao();
-        String sql = "SELECT n.* " +
+            String sql = "SELECT n.* " +
                      "FROM notificacao n " +
                      "JOIN notificacaoUsuario nu ON n.id_notificacao = nu.id_notificacao " +
                      "WHERE nu.id_usuario = ? AND nu.lida = ?";
 
         try {
-             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
 
             preparedStatement.setInt(1, idUsuario);
             preparedStatement.setBoolean(2, true);
@@ -221,24 +244,25 @@ public class NotificacaoDAOSQLite implements INotificacaoDAO {
     public List<Notificacao> listaPorUsuario(int idUsuario){
             List<Notificacao> notificacoes = new ArrayList<>();
             Connection conexao = ConexaoService.getConexao();
-        String sql = "SELECT n.* " +
-                     "FROM notificacao n " +
-                     "JOIN notificacaoUsuario nu ON n.id_notificacao = nu.id_notificacao " +
-                     "WHERE nu.id_usuario = ?";
+            String sql = "SELECT n.*, nu.lida " +
+                 "FROM notificacao n " +
+                 "JOIN notificacaoUsuario nu ON n.id_notificacao = nu.id_notificacao " +
+                 "WHERE nu.id_usuario = ?";
 
         try {
-             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
 
             preparedStatement.setInt(1, idUsuario);
-            
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     int idNotificacao = resultSet.getInt("id_notificacao");
                     String titulo = resultSet.getString("titulo");
                     String mensagem = resultSet.getString("mensagem");
+                    boolean lida = resultSet.getBoolean("lida");
 
                     Notificacao notificacao = new Notificacao(idNotificacao, titulo, mensagem);
+                    notificacao.setLida(lida);
                     notificacoes.add(notificacao);
                 }
             }

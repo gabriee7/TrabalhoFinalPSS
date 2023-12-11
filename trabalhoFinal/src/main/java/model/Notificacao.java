@@ -11,6 +11,7 @@ package model;
 public class Notificacao {
     private String titulo;
     private String mensagem;
+    private boolean lida;
     private int id;
 
     public Notificacao(String titulo, String mensagem) {
@@ -45,6 +46,16 @@ public class Notificacao {
         this.id = id;
     }
 
+    public boolean isLida() {
+        return lida;
+    }
+
+    public void setLida(boolean lida) {
+        this.lida = lida;
+    }
+
+    
+    
     public Notificacao(int id, String titulo, String mensagem) {
         this.titulo = titulo;
         this.mensagem = mensagem;

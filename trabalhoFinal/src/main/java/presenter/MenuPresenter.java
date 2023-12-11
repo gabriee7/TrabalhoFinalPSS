@@ -49,6 +49,13 @@ public class MenuPresenter {
             view.getTextNotificacoesMenuBar().setVisible(false);
             view.getMenuVisualizarTodasNotificacoes().setVisible(false);
             view.getBtnNotificacoes().setVisible(true); 
+            view.getBtnNotificacoes().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt){
+                VisualizaTodasNotificacoesPresenter presenter = new VisualizaTodasNotificacoesPresenter();
+                view.getjDesktopPane1().add(presenter.getView()).setVisible(true);
+            }
+        });
         }else{
             view.getMenuVisualizarTodasNotificacoes().setVisible(true);
             view.getBtnNotificacoes().setVisible(false);

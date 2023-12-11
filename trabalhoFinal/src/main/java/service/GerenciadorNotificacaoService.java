@@ -35,6 +35,10 @@ public class GerenciadorNotificacaoService {
        
     }
     
+    public void marcaLida(Notificacao notificacao){
+        notificacaoDAO.marcaLida(notificacao);
+    }
+    
     public List<Notificacao> consultarTodasLidas(int id){
         return notificacaoDAO.listaLidas(id);
     }

@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -48,7 +49,7 @@ public class ConfiguracaoView extends javax.swing.JInternalFrame {
         labelConfirmaSenha = new javax.swing.JLabel();
         textFieldConfirmaSenha = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        labelLog = new javax.swing.JLabel();
         boxLog = new javax.swing.JComboBox<>();
 
         setClosable(true);
@@ -79,7 +80,7 @@ public class ConfiguracaoView extends javax.swing.JInternalFrame {
 
         labelConfirmaSenha.setText("Confirma senha");
 
-        jLabel5.setText("Tipo de Log");
+        labelLog.setText("Tipo de Log");
 
         boxLog.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -120,7 +121,7 @@ public class ConfiguracaoView extends javax.swing.JInternalFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(boxLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
+                                                .addComponent(labelLog)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel4))))))))
                     .addGroup(layout.createSequentialGroup()
@@ -138,7 +139,7 @@ public class ConfiguracaoView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(labelSenhaAtual)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(labelLog))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -220,6 +221,18 @@ public class ConfiguracaoView extends javax.swing.JInternalFrame {
         return textFieldSenhaAtual;
     }
 
+    public JComboBox<String> getBoxLog() {
+        return boxLog;
+    }
+
+    public JButton getBtnAlterarLog() {
+        return btnAlterarLog;
+    }
+
+    public JLabel getLabelLog() {
+        return labelLog;
+    }
+
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -234,8 +247,8 @@ public class ConfiguracaoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel labelConfirmaSenha;
+    private javax.swing.JLabel labelLog;
     private javax.swing.JLabel labelNovaSenha;
     private javax.swing.JLabel labelSenhaAtual;
     private javax.swing.JTextField textFieldConfirmaSenha;

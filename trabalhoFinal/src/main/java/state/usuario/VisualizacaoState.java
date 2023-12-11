@@ -9,7 +9,9 @@ import command.usuario.FecharCommand;
 import command.usuario.IUsuarioCommand;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JOptionPane;
+import model.Notificacao;
 import presenter.UsuarioPresenter;
 import service.GerenciadorNotificacaoService;
 import service.GerenciadorUsuarioService;
@@ -65,7 +67,11 @@ public class VisualizacaoState extends UsuarioState {
     public void configuraTela(){
         int id = serviceUsuario.consultar(nome).getId();
         int enviada = serviceNotificacao.consultarTodasPorUsuario(id).size();
-        int lidas = serviceNotificacao.consultarTodasLidas(id).size();
+        int lidas = 0;
+        List<Notificacao> lidasList = serviceNotificacao.consultarTodasLidas(id);
+        if(lidasList != null){
+            lidas = lidasList.size();
+        }
         UsuarioView view = presenter.getView();
 
         view.setTitle("Visualização de Usuário");

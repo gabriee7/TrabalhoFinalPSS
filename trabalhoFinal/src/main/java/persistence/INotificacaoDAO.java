@@ -20,4 +20,5 @@ public interface INotificacaoDAO {
     public List<Notificacao> listarTodos();
     public List<Notificacao> listaPorUsuario(int idUsuario);
     public List<Notificacao> listaLidas(int idUsuario);
+    public void marcaLida(Notificacao notificacao);
 }

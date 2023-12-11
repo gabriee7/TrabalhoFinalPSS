@@ -41,6 +41,9 @@ public class ConfiguracaoPresenter {
         view.getTextFieldConfirmaSenha().setVisible(false);
        view.getTextFieldNome().setEnabled(false);
         view.getTextFieldDataCadastro().setEnabled(false);
+        view.getLabelLog().setVisible(false);
+        view.getBoxLog().setVisible(false);
+        view.getBtnAlterarLog().setVisible(false);
         
         view.getBtnAlterarSenha().addActionListener(new ActionListener(){
             @Override

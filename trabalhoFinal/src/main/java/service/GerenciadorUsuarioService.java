@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package service;
-
 import com.pss.senha.validacao.ValidadorSenha;
 import java.util.List;
 import model.Usuario;
@@ -21,6 +20,7 @@ public class GerenciadorUsuarioService {
     public static GerenciadorUsuarioService instancia = null;
     
     public GerenciadorUsuarioService() {
+
         this.factoryService = new DAOFactoryService();
         this.usuarioDAO = factoryService.getUsuarioDAO();
         this.usuarioAutenticado = Sessao.getInstancia().getUsuarioLogado();
