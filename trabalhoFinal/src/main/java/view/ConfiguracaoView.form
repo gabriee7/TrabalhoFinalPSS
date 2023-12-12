@@ -49,30 +49,40 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="textFieldNome" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelDataCadastro" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="textFieldDataCadastro" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelNome" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="textFieldNovaSenha" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
-                                  <Component id="labelConfirmaSenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textFieldConfirmaSenha" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="labelSenhaAtual" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="labelNovaSenha" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="textFieldSenhaAtual" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="65" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="boxLog" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
-                                              <Component id="labelLog" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
                                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="labelLog" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="boxLog" min="-2" pref="100" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="labelConfirmaSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="textFieldConfirmaSenha" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
+                                          <Component id="textFieldNovaSenha" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -83,7 +93,7 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -94,33 +104,35 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelSenhaAtual" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelLog" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="textFieldNome" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                           <Component id="textFieldSenhaAtual" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelDataCadastro" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="textFieldDataCadastro" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="labelNovaSenha" min="-2" max="-2" attributes="0"/>
-                          <Component id="boxLog" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelLog" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="labelNovaSenha" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="textFieldNovaSenha" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="labelConfirmaSenha" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="boxLog" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="textFieldNovaSenha" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="labelConfirmaSenha" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="textFieldConfirmaSenha" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -147,14 +159,14 @@
         <Property name="text" type="java.lang.String" value="Configura&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="labelNome">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nome"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="textFieldNome">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="labelDataCadastro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Data cadastro"/>
       </Properties>

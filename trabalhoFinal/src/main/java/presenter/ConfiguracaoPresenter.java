@@ -6,8 +6,11 @@ package presenter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import model.Usuario;
+import properties.Configuracao;
 import service.GerenciadorUsuarioService;
 import service.Sessao;
 import view.ConfiguracaoView;
@@ -39,11 +42,13 @@ public class ConfiguracaoPresenter {
         view.getTextFieldSenhaAtual().setVisible(false);
         view.getTextFieldNovaSenha().setVisible(false);
         view.getTextFieldConfirmaSenha().setVisible(false);
-       view.getTextFieldNome().setEnabled(false);
+        view.getTextFieldNome().setEnabled(false);
         view.getTextFieldDataCadastro().setEnabled(false);
         view.getLabelLog().setVisible(false);
         view.getBoxLog().setVisible(false);
-        view.getBtnAlterarLog().setVisible(false);
+        
+        if("admin".equals(usuarioLogado.getTipo()))
+            view.getBtnAlterarLog().setVisible(true);
         
         view.getBtnAlterarSenha().addActionListener(new ActionListener(){
             @Override
@@ -55,6 +60,10 @@ public class ConfiguracaoPresenter {
                 }
             }
         });
+        
+        for (ActionListener listener : view.getBtnSalvar().getActionListeners()) {
+            view.getBtnSalvar().removeActionListener(listener);
+        }
         
         view.getBtnSalvar().addActionListener(new ActionListener(){
             @Override
@@ -78,11 +87,69 @@ public class ConfiguracaoPresenter {
             }
         });
         
+        view.getBtnAlterarLog().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt){
+                try{
+                    configAlterarLog();
+                }catch(Exception e){
+                    exibirMensagem(e.getMessage(), "Erro", 0);
+                }
+            }
+        });
+        
         view.setVisible(true);
     }
 
     public ConfiguracaoView getView() {
         return view;
+    }
+    
+    private void salvarNovoLog(String novoLog){
+        Configuracao.getInstancia().setProp("LOG", novoLog);
+        exibirMensagem("Novo Log salvo!! Por favor reinicie a aplicação para a atualização.", "Log", 1);
+        fechar();
+    }
+    
+    private void configAlterarLog(){
+        view.getLabelNome().setVisible(false);
+        view.getLabelDataCadastro().setVisible(false);
+        view.getTextFieldNome().setVisible(false);
+        view.getTextFieldDataCadastro().setVisible(false);
+        view.getBtnAlterarSenha().setVisible(false);
+        view.getBtnAlterarLog().setVisible(false);
+
+        view.getBoxLog().removeAllItems();
+        
+        String tiposProperties = Configuracao.getInstancia().getProp("LOGAVALIABLE");
+        ArrayList<String> tiposConverter = new ArrayList<>();
+       
+        for (String item : tiposProperties.split("OR")) {
+            tiposConverter.add(item);
+        }
+        
+        for(String elem: tiposConverter){
+            view.getBoxLog().addItem(elem);
+        }
+        
+        for (ActionListener listener : view.getBtnSalvar().getActionListeners()) {
+            view.getBtnSalvar().removeActionListener(listener);
+        }
+
+        view.getBtnSalvar().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt){
+                try{
+                    String novoLog = view.getBoxLog().getSelectedItem().toString();
+                    salvarNovoLog(novoLog);
+                }catch(Exception e){
+                    exibirMensagem(e.getMessage(), "Erro", 0);
+                }
+            }
+        });
+        
+        view.getLabelLog().setVisible(true);
+        view.getBoxLog().setVisible(true);
     }
     
     private void alterarSenha(){
