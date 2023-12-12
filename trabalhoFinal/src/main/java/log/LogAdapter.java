@@ -38,7 +38,8 @@ public class LogAdapter {
     
     public void addLog(String operacao, String mensagem){
         String usuario = Sessao.getInstancia().getUsuarioLogado().getNome();
-
+        if(usuario ==null)
+            usuario = "";
             
         //NÃO FUNCIONOU
 //        LocalDate data = LocalDate.now();

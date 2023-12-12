@@ -50,9 +50,13 @@ public class GerenciadorUsuarioService {
         }else{
             usuario.setAtivo(true);
             usuario.setTipo("padrao");
-        }
-        LogAdapter.getInstancia().addLog("Insercao de Usuario: ", "Sucesso Usuario "+ nome);
+        }         
+        
+
         usuarioDAO.criar(usuario);
+        Sessao.getInstancia().setUsuarioLogado(consultar(nome)); 
+
+        LogAdapter.getInstancia().addLog("Insercao de Usuario: ", "Sucesso Usuario "+ nome);
     }
    
     public List<Usuario> listarTodos(){
