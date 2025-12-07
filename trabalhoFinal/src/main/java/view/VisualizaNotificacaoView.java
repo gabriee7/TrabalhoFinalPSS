@@ -39,10 +39,6 @@ public class VisualizaNotificacaoView extends javax.swing.JInternalFrame {
         btnFechar = new javax.swing.JButton();
         btnMarcaLida = new javax.swing.JButton();
 
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
-
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Notificacao");
 
